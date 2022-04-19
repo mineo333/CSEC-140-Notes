@@ -1,0 +1,3028 @@
+RIT CSEC-140 Notes
+
+Week 1, Lecture 1 - What is Cybersecurity?
+WHat is cybersecurity?
+
+It's a little bit of everything. A little bit of law, of policy, of government, of tech, of business. The better question is,
+
+What do cybersecurity professionals try to do on a day-to-day basis?
+
+CIA Triad
+Confidentiality- Ensuring that data which should be confidential is confidential
+Integrity- Ensuring that data is only changed in authorized ways
+Availability- Ensuring that data can be accessed when it is needed
+
+Look up McCumber Cube (1991)
+
+Information Characteristics:
+Confidentiality- Ensuring that data which should be confidential is confidential
+Integrity- Ensuring that data is only changed in authorized ways
+Availability- Ensuring that data can be accessed when it is needed
+
+Information States:
+Transmission
+Storage
+Processing
+
+Security Countermeasures (an older account of cybersecurity countermeasures):
+Technology
+Policy and Practice
+Training/Education
+
+
+Week 1, Lecture 2 - Threat and Vulnerabilities
+Core Terms
+-Vulnerability: A flaw, bug, or misconfiguration in the system that permits the CIA triad to be attacked.
+	^ (1) It is usually an accident and (2) They're often attacked in accidental ways
+-Threat Actor: A person or group that might attack a system.
+-Threat: Something bad a threat actor could do after a successful attack.
+-Risk: A measurement based on the damage inflicted by a threat actor carrying out a threat and the likelihood of the threat being realized.
+-Exploit: A way to make use of a vulnerability to attack the system's confidentiality, integrity, or availability.
+	^ often intentional, but sometimes unintentional
+-Payload: What the attacker uses the exploit to do, such as install malware.
+
+Three main vulnerabilities are:
+(1) Design flaws
+(2) Misconfigurations
+(3) Bugs
+
+
+Week 1, Lecture 3 - Threat Modeling (Part 1)
+Hypothetical - Your company wants to build a new data center... what could go wrong?
+-Network attack			-Delays in equipment/materials
+-Supply chain attack		-Delays in software installation
+-Insider threat			-Tornado
+-Denial of Service Attack	-Earthquake
+-Law enforcement order		-Meteor strike
+-Terrorism			And many more...
+
+Realistic Approach To Security
+-It's impossible to defend against every threat.
+	*Factors may be outside of your control.
+	*Security controls may be too expensive or impractical.
+-Focus on W-Questions
+	*Who would attack us? (include natural disasters)
+	*Why would they attack us?
+	*How would they attack us? Tactics, tools, and procedures.
+	*What would they be after?
+	*WHere is that asset located?
+	*When would we know about the attack?
+
+Attacker Motivations - MICE & RASCLS
+Money		Reciprocation
+Ideology	Authority
+Coercion	Scarcity
+Ego		Commitment
+		Liking
+		Social proof
+
+
+Week 1, Lecture 4 - Threat Modeling (Part 2)
+Threat Models
+-Threat model: a formal framework to group threats into discrete categories
+	*Used to plan security controls
+-Many possible threat modeling frameworks
+-Microsoft STRIDE Framework
+	*Developed by Microsoft in mid-2000s
+	*First formal threat model to gain widespread acceptance
+
+STRIDE Threat Model and Controls
+CATEGORY		DESCRIPTION						CONTROLS
+Spoofing		Pretending to be someone else				Authentication
+Tampering		Changing data to be inaccurate				Integrity controls
+Repudiation		Denying that you did a thing you did			Accountability controls
+Information Disclosure	Revealing information that should not be		Confidentiality controls
+			otherwise accessible			
+Denial of Service	Trying to stop someone else from using a system		Avaibility controls
+Elevation of Privilege	Trying to get a higher level of access than you		Authorization controls
+			are currently assigned
+
+
+Week 1, Lecture 5 - Security Controls
+ISC^2 Control Categorizations
+-Categorized along two dimensions
+	*Function: What the control does
+	*Mechanism: How the control does it
+-Function			-Mechanism
+ *Directive	*Detective	  *Technical
+ *Deterrent	*Corrective	  *Administrative
+ *Preventive	*Recovery	  *Physical
+		*Compensating
+
+NIST Cybersecurity Framework
+Identify | Protect | Detect | Respond | Recover
+ 
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 2, Lecture 1 - Introduction
+What is Cryptography?
+"Secrete writing," or "the art of writing or solving codes."
+Modern cryptography is a science, and a math discipline.
+
+What are the goals (security services) we want to achieve in cryptography? 		Security Mechanisms:
+-Data confidentiality									Encryption
+	*Information is not made available to unauthorized parties
+-Data integrity										Digital signatures
+	*Data has come intact from the sender
+-Authentication										Digital signatures
+	*Assures recipient that the message is from the source that it claims to be from
+-Nonrepudiation										Digital signatures
+	*Protection against denial of sending or receiving in the communication
+
+Encryption is a process of converting plaintext into another form which is uunintelligble (ciphertext).
+Kerckoff's Principle: An attacker knows how to encrypt and decrypt
+A key, k2, is a piece of information or parameter used in encryption/decryption algorithms. The key must be kept secret. Even if Oscar knows every detail
+of the decryption method, he can't recover x.
+Symmetric cryptography, if k1 = k2. Assymetric cryptography, otherwise.
+
+Symmetric Key Encryption
+-A single secret key is used for both encryption and decryption.
+-The sender and receiver must share the secret key.
+
+Asymmetric Cryptography:
+-Also called public key cryptography
+-Each used has two keys: a public key and a private key
+	*These two keys are mathematically related in a way that message encrypted by a public key can only be decrypted by the corresponding private key.
+	*They are generated by a key generation algorithm.
+
+
+Week 2, Lecture 2 - Symmetric (Part 1 - Techniques)
+Symmetric Key Cryptograhic Algorithms
+
+Crytographic Methods/Techniques
+-Method of transforming plaintext to ciphertext:
+	*Transposition/Permutation
+		HELLO -> HLEOL
+	*Substitution
+		HELLO -> URYYB
+-Key Reusability:
+	*Same key is used
+	*One time pad (codebook)
+-Method of processing plaintext:
+	*Block cipher
+	*Stream sipher
+
+Ancient Symmetric Key Algorithms
+-Symmetric encryption has been used to protect communications for centuries
+-Only organizations and individuals with an extraordinary need for secrecy had made use of it
+-Expensive and slow because it's done manually
+-E.g., Scytale cipher, Caesar cipher, Polybius cipher
+
+
+Week 2, Lecture 3 - Symmetric (Part 2 - Scytale & Caesar)
+Scytale/Skytale Cipher
+-Used by Spartans
+-How did it work?
+-Example:
+	*Before winding: the ciphertext
+	HENTEIDLAEAPMRCMUAK
+	*After winding: the original message
+	H / E / L / P / M
+	E / I / A / M / U
+	N / D / E / R / A
+	T / T / A / C / K
+-Cryptographic Method: Transposition
+-The Secret / Key?
+	*The diameter of the Scytale
+-How easy to guess the key?
+	*You just need the correct rod, and there wasn't many out there
+
+Caesar Cipher
+-Julius Caesar used a substitution cipher
+	*Plaintext: a b c d e f g h i j k l m n o p q r s t u v w x y z
+	*Ciphertext: n o p q r s t u v w x y z a b c d e f g h i j k l m
+-URYYB -> HELLO
+-The Secret / Key?
+	*Letter offset / shift
+-How many combinations
+	= number of possible keys (letter offsets / shifts)
+	= 25 different key values (i.e., letter shifts)
+-How would you break this?
+	(1) Try all possible letter shifts (Brute Force Search)
+	(2) Letter frequency
+
+
+Week 2, Lecture 4 - Symmetric (Part 3 - Polybius & OTP)
+Porbius Cipher
+-Method: Numerical Substitution
+	*Plaintext: SEND HELP NOW
+	*Ciphertext: 34 51 33 41 32 51 13 53 33 43 25
+-Table structure:
+	(1) Letters in reverse order
+	(2) Shifting the alphabet
+	(3) Start with a keyboard (e.g. "Example")
+	(4) Completely random)
+-The Secret / Key?
+	*The table
+-How many configurations?
+	= 26! = 4.03 x 10^26 possible key values (ignoring I and J share the same cell)
+-How would you break this?
+	*Letter frequency
+
+One Time Pads (OTPs)
+-Problem: Transposition & substitution use the same key
+-Solution -> use a OTP
+	*Key should be on used onced
+		-Key is the same size as the plaintext
+		-Key is perfectly random {not pseudo-random)
+	*E.G., Caesar Cipher with using one-time pads
+		-Plaintext = Hello
+		-One-time pad (key) = 4 7 0 1 2 (key is same size as plaintext = 5)
+	*Perfect secrecy (unbreakable)
+		-Cipher gives no added information
+		-Can not do frequency analysis
+
+
+Week 2, Lecture 5 - Symmetric (Part 4 - DES)
+Modern Symmetric Key Algorithms
+-Use substitution and permutation techniques similar to those used by ancient ciphers but much more complex
+	*Much harder to guess
+-Process text in bits
+	*Each ASCII character is 8-bits long
+		-E.G., H -> 01001000
+-E.G., DES, 3DES, AES
+
+DES (Data Encryption Standard)
+-Based on Feistel Network
+-16 rounds
+-Key size (56 bits)
+-Block size (64 bits)
+-How easy to guess the key?
+	*Key size is too short
+	*2^56 = 7.2 x 10^18 possible keys
+
+3DES (Triple DES)
+-3DES aka Triple DES
+	*Key size (56, 112, 168 bits)
+-Problem?
+	*Slow
+
+
+Week 2, Lecture 6 - Symmetric (Part 5 - AES & Others)
+AES (Advanced Encryption Standard)
+-Aka Rijndael
+-Block cipher (block size = 128 bits)
+-Key sizes (128, 192, or 256 bits)
+-How easy to guess the key?
+	*2^127 = 3.4 x 10^38 possible keys
+	*Takes millions of years to brute force even the 128-bits key
+
+Other Modern Symmetric Key Algorithms
+-RC2/4/6
+	*All but RC4 are block ciphers
+-Blowfish
+-Twofish
+-IDEA
+
+Symmetric Key Cryptography (Pros and Cons)
+-Pro
+	*Over a million times quicker than asymmetric encryption
+-Con
+	*Transmitting a secure key over an insecure channel
+
+Conclusion
+-Brief overview of most popular symmetric key cryptographic algorithms
+-Techniques/Methods
+	*Substitution vs transposition ciphers, one-time pads
+	*Block ciphers vs stream ciphers
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 3, Lecture 1 - Asymmetric
+-Symmetric key cryptographic techniques/algorithms (single key)
+-Asymmetric key cryptographic techniques/algorithm (public-private keys)
+
+Public Key Encryption
+				public key database 
+  		PK_bob /				PK_bob\
+ALICE - x -> E_PK_Bob(x) - y -> insecure - y -> D_SK_bob(y) - x -> BOB
+				channel
+				(eg. Internet)
+(Alice)								(Bob)
+"Hello Bob" - > Encrypt - > ciphertext	ciphertext -> Decrypt -> "Hello Bob"
+	    ^ Bob's public key				^ Bob's private key
+
+Asymmetric Key Encryption Algorithms
+-Mathematics
+	*Key Generation
+	*Encryption/Decryption
+-Requirements
+ (1) Impossible to guess the private key
+ (2) Impossible to recover plaintext
+ (3) Both public and private keys can be used for encryption
+-RSA
+	*Rivest, Shamir, and Adleman at MIT in 1977
+	*Practical application of public-private key (SSL/TLS - banks)
+							^ if a website is https, the website is being encrypted with the SSL/TLS protocol
+	*Strength dependent on key length
+-Diffie-Hellman
+	*Key exchange process, not encryption
+	*Uses public key cryptography to generate public/private key pairs
+	*How to exchange the shared symmetric key?
+
+
+Week 3, Lecture 2 - Best of Both
+Asymmetric Key Cryptography Pro/Con
+-Pro
+	*No transmitting of private key required
+-Con
+	*Over a million times slower than symmetric encryption
+
+Best of Both Worlds (Symmetric & Asymmetric):
+Approach used by PGP and SSL/TLS
+-Symmetric key is used for the actual encryption/decryption
+	*Document to be sent is encrypted with symmetric key
+-Symmetric key is encrypted with public key of recipient
+-Private key of recepient is used to decrypt the symmetric key, which is then used to decrypt the doccument
+-Why bother using a symmetric key at all?
+	*Faster to encrypt long messages using symmetric than asymmetric
+
+
+Week 3, Lecture 3 - Signatures
+Message Authentication
+				Public Key Database
+	Alice's Public Key	/		   \ Alice's Public Key
+ALICE -> ENCRYPT ->			internet -> 	DECRYPT		-> BOB
+	^ Alice's private key				^ Alice's public key
+
+Digital Signatures
+-Equivalent to hand-written signatures:
+	*Alice digitally signs documents, establishing she is document owner/creator (authentication)
+-Achieve: 
+	*Authentication (verifies identity of sender)
+	*Message Integrity (verifies message was never altered in transit)
+	*Non-repudiation (sender cannot deny signing message)
+-Public-key encrypting long messages is computationally expensive
+-Goal: reduce the size of the message to a fixed-length short fingerprint or message digets and then sign the fingerprint instead
+	*Use hashing
+
+Hash Functions
+-One-way, many-to-1
+-Computationally impossible to find 2 messages with same hash code
+plaintext -> hash function -> ciphertext
+
+Popular Hash Functions
+-MD5
+	*Message digiest length = 128 bits
+	*Not secure anymore
+-SHA-I
+	*Message digest length = 160 bits
+-SHA-256, SHA-3, etc...
+
+Encoding
+-Transofrms data
+-Changes representation
+	*Base64, ASCII-Unicode, etc.
+-Reversible, similar ot encryption/decryption but key is not required
+	*Encoding/decoding
+
+Conclusion:
+Digital Signatures
+-Source Authentication, Data Integrity, Non-repudiation
+-No confidentiality
+
+
+Week 3, Lecture 4 - PKI
+Public Key Infrastructure (PKI)
+-A framework for authenticating users and public keys
+	*Secure distribution of public keys
+	*Digital Certificates
+	*Certificate Authorities (CAs)
+
+(Insecure) Public Key Distribution
+-Suppose now that the database server does verify users' identities before accepting their public keys
+
+Secure Public Key Distribution
+-First, the server must verify the identity of a public key before accepting it
+	*The database is not compromised
+-Second, there must be a mechanism that binds a user's ID to the user's public key
+
+Binding an ID to a Public Key
+-Binding as a message:
+	*x = "(Bob, PK_Bob)"
+	*x = "Bob's public key is PK_Bob"
+-When x is sent to a customer from the server, the following services must be provided:
+	*Data integrity
+	*Authentication
+	*Non-repudiation
+
+Secure Public Key Distribution
+-A message that binds a public key to the owner's name must be signed by the server
+	*This is the basic idea behind digital certificates
+
+Digital Certificates
+-Assume a trusted party
+	*Capable of verifying user's identity (acting like the public key server)
+	*This trusted source is known as a certificate authority (CA)
+-A digital certificate is a digital signature issued by a CA certifying Bob's ID and public key
+-For example, Bob's certificate should looks like:
+	Cert_CA->Bob	= BOB // PK_Bob // Sign_SK_CA
+
+Chicken and Egg?
+-How do we obtain a CA's public key in the first place?
+Secure distribution of a public key of any user - Digital Certificates -> Secure distribution of the public key of a CA
+														^
+-A common solution is that CA's public keys are distributed as a	Once we obtain the public key of the CA, we can use
+part of an operating system or Web browser				it to obtain any user's public keys in a secure manner
+									
+PKI in Practice
+-Much more complicated than theory
+	*CA Hierarchy
+	*Revocation of certificates
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 4, Lecture 1 - Security Risk Analysis Part A
+
+What is risk?
+The potential for loss, damage or destruction of an asset as a result of a threat exploiting a vulnerability.
+-The possibility of something bad happening
+-Uncertainty is inherent when discussing risk
+	*Tied to effects of activity with respect to something you value
+
+What is risk analysis?
+-A methodical examination that brings together all elements of risk management
+	*Identification
+	*Analysis
+	*Control
+-Is CRITICAL to development of effective risk management strategy
+
+Do YOU take risks?
+Of course - every day when you walk to your vehicle, drive to and from work, cross the street, eat out, live your life
+You might get...
+-Hit by a truck
+-Involved in a collision
+-Accosted by someone
+-Slip on ice / fall down the stairs
+-Meet a falling object
+-Cut your finger
+-Get a stomach bug / flu / contract some disease
+
+Do you analyze all these risks?
+Probably yes, but you think it's second nature
+-Look both ways before crossing the street
+-Be careful of the other yahoo drivers
+-Be aware of your surroundings, choose where to travel
+-Use a handrail
+-Be cautious around sharp objects
+
+What is Security Risk Analysis?
+It's still risk analysis, but with an end goal of developing an effective risk management strategy
+
+Four steps to security risk analysis:
+1. Identify
+	*assets to be protected - asset valuation
+2. Define 
+	*specific threats - threat analysis
+3. Calculate
+	*annualized loss expectancy - ALE - a fundamental concept in risk analysis
+4. Select
+	*appropriate safeguards - comprised of both identification (vulnerability assessment) and risk controls - mitigations put in place to limit damage
+		-NOTE: that risk controls are likely to LIMIT rather than ELIMINATE risk
+
+
+Week 4, Lecture 2 - Security Risk Analysis Part B
+
+Identify
+-How do you identify assets?
+	*What is an ASSET?
+		-Any resource that can be used to produce value
+		-Usually represent value of ownership that can be converted to cash (although cash is also considered an asset)
+	*You'll need to identify what's important to YOU? To your COMPANY? What is considered *of value*?
+
+Assets...
+Remember that risk is related to something you value (an asset):
+-Funds
+-Hardware
+-Location
+-People
+-Knowledge
+-Technology/Intellectual property
+-Reputation
+
+Define specific threats
+-What constitutes a specific threat?
+	*Dictionary: threat = a communicated intent to inflict harm or loss on another person
+-Specific threat has to be something you BELIEVE to be likely
+	*Might even be imminent but has to be plausible
+	*This can include a LOT of things
+
+Calculate
+ALE - Annualized Loss Expectancy
+-A standard, quantifiable measure of the impact that a realized threat has on an organization's assets
+ALE = SLE x ARO
+-SLE = Single Loss Expectancy - how much money will you lose if a single threat happens? (expressed in dollars - also known as value at risk or VaR)
+-SLE = Asset Value (AV in dollars) x Exposure Factor (EF as a percentage)
+-AV -> how much is it worth?
+-EF ->
+-ARO = Annualized Rate of Occurrence - how many times can you reasonably expect this threat or event to happen in one year?
+
+Qualitative vs Quantitive
+-Risk analysis can be either
+	*Qualitative - subjective - no attempt to assign a measurable result
+	*Quantitative - objective - assigns numeric values (cost) to components (assets and threats)
+-Each has it's place with pros and cons...
+	*Qualitative - lower effort and input data required, fewer complex calculations BUT relies more on guesswork and assumptions, no financials, can't be automated, harder to communicate results
+	*Quantitative - clear cost-benefit link, can be automated, easier to communicate results BUT requires complex calculations, time/effort/volume of input data all high, human bias can skew results, some assumptions
+
+Four things you can do with risk:
+1. Avoid
+-Self explanatory
+2. Mitigate
+-Apply some control(s) to reduce impact
+3. Transfer
+-Contractually engage with a third party who takes on the risk for some money (insurance)
+4. Accept
+-Do NOTHING and hope it doesn't happen to you
+
+Risk analysis drives investment in Security Controls
+Security controls:
+Control / limit / mitigate / provide data about some security incident or event that could happen, is happening, or has happened
+Can be categorized by nature or by time
+
+Security Controls (Nature-Based)
+1. Physical
+-Fences, doors, locks, fire extinguishers
+2. Procedural
+-IR process, security awareness and training, management oversight
+3. Technical
+-User authentication, logical access, antivirus software, firewalls, other systems
+4. Legal
+-Privacy laws, policies, clauses
+
+Security Controls (Time-Based)
+1. Directive
+-Guide the use or implementation of controls (policies, procedures, standards)
+2. Preventative
+-Prevent bad things from occurring (lock out unauthorized users)
+3. Detective
+-Identify and characterize incidents in process (intruder alarms, notifications)
+4. Corrective
+-Limit damage caused by incident
+5. Forensic (or Recover)
+-Provide after event data to allow some event that has happened in the past to be uncovered or the organization to get back to work
+
+Why perform a risk analysis?
+Risk analysis could be:
+-Required by law or legislation
+	*Sarbanes Oxley Audit Standard 5
+	*Federal Information Security Management Act (FISMA)
+-Recommended to abide by a standard - to help minimize business disruption and continue operation in the event of an incident
+	*ISO / IEC standards (best practice frameworks)
+-Useful to protect your organization
+	*From lawsuits
+	*From cybersecurity risks
+	&& to help you decide where best to invest your security budget
+-You can't expect what you don't inspect OR if you don't look for potential liabilities you're not likely to find them (but someone else may!)
+
+
+Week 4, Lecture 3 - Security Analysis Part 3
+
+What is a risk management framework?
+-A security framework is a coordinated system of tools and behaviors in order to monitor data and transactions that are extended to where data utilization occurs, thereby providing end-to-end security (Vahradsky, 2012)
+-Basically it's a set of guidelines that organizations follow in an effort to protect themselves from risk (to help them manage the risk to their organization)
+-USA-NIST has a good example for you to review:
+	*NIST SP-800-37 revision 2 (May 2018)
+
+Five Crucial Components
+-Of a risk management framework
+1. Identification of risk
+2. Measurement and assessment (MUST be measurable)
+3. Mitigation and/or control (can't always eliminate risk)
+4. Reporting and monitoring (provides accountability)
+5. Governance (ensure that all employees perform duties within the framework)
+
+PROBLEM
+Many organizations do NOT YET USE security frameworks to help them understand and manage their risks
+
+There are MANY frameworks
+Some specifically noted as "risk management frameworks", others notes as "security frameworkers" that include risk management concepts. 
+Frameworks provide a set of potential recommendations that may or may not apply to your organization.
+-Someone has to review them, and then select the right framework(s) to use to protect your organizational assets
+
+Bottom line
+Risk management plays a crucial role to an organization in the areas of
+-Financial stability
+-Continued performance
+-Longevity of organization
+
+
+Week 4, Lecture 4 - Security Risk Analysis Part 4
+
+What is an assessment?
+-The action or an instance of making a judgment about something
+-The evaluation of some behavior, condition, or activity
+
+What is RISK assessment?
+-Evaluating the risk to an organization
+-Encompasses a variety of elements
+
+Recall definition of 'risk'
+-Potential for loss
+-Tied to something of value, or an asset
+
+So risk assessment is a measure..
+-But what to measure? And how to decide?
+
+What's valuable to you?
+Consider both tangibles and intangibles
+-What would provide a signicant negative impact if you were to lose it
+	*Tangibles: Transportation / availability of housing / personal posessions 
+	*Intangibles: Health / freedom / mobility / credit worthiness / trust / reputation
+-Some of these you may have direct control overs / others you clearly do not
+
+How to assess value?
+-Sometimes a measure of financial cost
+-Some items have no clear cost
+-Sometimes the measure is a personal judgement call
+-Other times it's a value assigned by someone else
+
+Considerations
+-Primarily:
+	*Probability and impact
+	*These two are usually measured on a scale from 1-10, 10 being the highest
+-Other considerations:
+	*Current issues (what is driving the risk assessment?)
+	*Risk attitude (how does management view risk in your project(s)?)
+	*Risk appetite (organization risk tolerance or risk aversion)
+
+Core vs Non-Core Risk
+-CORE risk impacts the function of the organization
+-NON-CORE risk is peripheral to the organization (but could impact it in other ways)
+-You should categorize as one or the other (then address on CORE risks FIRST)
+
+Risk Categories
+-Organizing risk into categories can help prioritize
+-One common set is PESTLE (there are others. use what is appropriate for the needs of your organization)
+PESTLE:
+	*Political
+	*Economic
+	*Social
+	*Technological
+	*Legal
+	*Environmental
+
+Risk Categories
+-Should be included in any risk management plan
+-Often organized into a "risk register"
+-Basically a table referencing risks with some index number, and addressing likelihood, impact, and calculated risk level all on a single sheet
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 5, Lecture 1 - Outline
+
+Outline
+-Numbering Systems
+-Introduction (Network Architecture)
+-Network Firewalls
+-Port Scanning
+-VPN (Virtual Private Network)
+-Wireless Networks and Security
+
+
+Week 5, Lecture 2 - Numbering Systems
+
+Introduction
+-Decimal numbering system
+	*A decimal digit can have 10 possible values: {0,1,2,3,4,5,6,7,8,9}
+	*E.G., 180
+	*Base-10
+-A digit in a base-n numbering system can have n possible values:
+	*Binary: base-2
+		-A digist can have 2 possible values: {0, 1}
+		-E.G., 1011
+	*Hexademical: base-16
+		-A digit can have how many possible values?
+		-16 possible values: {0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F}
+
+Conversions
+Dec	Hex	Binary		Dec	Hex	Binary
+0	0	0000		8	8	1000
+1	1	0001		9	9	1001
+2	2	0010		10	A	1010
+3	3	0011		11	B	1011
+4	4	0100		12	C	1100
+5	5	0101		13	D	1101
+6	6	0110		14	E	1110
+7	7	0111		15	F	1111
+
+*1 hex = 4 bits (16 possible numbers)
+*1 byte = 2 hex = 8 bits (256 possible numbers)
+
+Binary to Decimal Conversion
+-Example:
+	10011001 (binary) = 153 (decimal)
+	00101011 (binary) = 43 (decimal)
+
+
+Week 5, Lecture 3 - Architecture 1, Introduction
+
+What Does A Network Consist Of?
+-Billions of connected computing devices:
+	*hosts = end systems
+	*running network apps at Internet's "edge"
+-Packet switches: forward packets (chunks of data)
+	*routers, switches
+-Communication links
+	*fiber, copper, radio, satellite
+	*transmission rate: bandwidth
+-Networks
+	*collection of devices, routers, links: managed by an organization
+
+Enterprise Network
+-companies, universities, etc.
+-mix of wired, wireless link technologies, connecting a mix of switches and routers
+	*Ethernet: wired access at 100Mbps, 1Gbps, 10Gbps
+	*WiFi: wireless access points at 11, 54, 450 Mbps
+
+The Internet
+-Network of networks
+	*Interconnected ISPs
+-Protocols are everywhere
+	*Control sending, receiving of messages
+	*e.g., HTTP (web), streaming video, Skype, TCP, IP, WiFi, 4G, Ethernet
+
+Client-Server Paradigm
+server:
+-always-on host
+-e.g., HTTP/web server
+clients:
+-communicate with server
+-e.g., HTTP/ web server
+
+Peer-to-Peer Paradigm
+-no always-on server
+-arbitrary end systems directly communicate
+-e.g., P2P file sharing
+
+
+Week 5, Lecture 4 - Architecture 2, Protocol Stack
+
+The OSI Model (Open Systems Interconnection)
+-application: support network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-process data transfer
+	*TCP, UDP
+-network: routing of datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+
+Week 5, Lecture 5 - Architecture 3, Encapsulation
+
+application (source) to application (destination):
+Application exchanges messages (M) to implement some application service using services of transport layer
+{M}
+
+transport (source) to transport (destination):
+Transport-layer protocol transfers M (e.g., reliability) from one process to another, using services of network layer
+segment {H1, M}
+
+network (source) to network (destination):
+Network-layer protocl transfers transport-layer segment [H_1 | M] from one host to another, using link layer services
+datagram {Hn, H1, M}
+
+link (source) to link (destination):
+Link-layer protocol transfers datagram [H_n | [H1 | M]] from host to neighboring host, using network-layer services
+frame {H1, Hn, H1, M}
+
+
+Week 5, Lecture 6 - Architecture 4, Layer 1
+
+-application: support network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-process data transfer
+	*TCP, UDP
+-network: routing of datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+Wired Communication Medium:
+Ethernet
+-two insulated copper wires, up to 1 Gbps (Cat 5)
+Coaxial cable
+-two concentric copper conductors
+-100's Mbps per channel
+Fiber optic cable
+-glass fiber carrying light pulses, each pulse a bit
+-high-speed operation:
+	*high-speed point-to-point transmission (10's - 100's Gbps)
+
+Wireless Communication Medium:
+Radio link types:
+-Wireless LAN (WiFi)
+	*10-100's Mbps; 10's of meters
+-Wide-area (e.g., 4G cellular)
+-Bluetooth
+	*short distances, limited rates
+-Satellite
+
+
+Week 5, Lecture 7 - Architecture 5, Layer 2 - Intro
+
+Link Layer
+-Link layer has responsibility of transferring datagram from one node to physically adjacent node over a link
+-Terminology:
+	*Hosts and routers: nodes
+	*Physically adjacent node: next hop
+	*Communication channels that connect adjacent nodes along communication path: links
+		-Wired
+		-Wireless
+		-LAN
+	*Layer-2 packet: frame, encapsulates datagram
+-datagram transferred by different link protocols over different links:
+	*e.g., WiFi on first link (802.11), Ethernet on next link (802.3)
+-each link protocol provides different services
+	*e.g., may or may not provide reliable data transfer over link
+
+Where is the link layer implemented?
+-in each-and-every host
+-link layer implemented in network interface card (NIC) or on a chip
+	*Ethernet, WiFi card or chip
+	*implements link, physical layer
+-attaches into host's system buses
+-combination of hardware, software, and firmware
+
+Collision Domain
+-single shared broadcast channel
+-two or more simultaneous transmissions by nodes: interference
+	*collision if node receives two or more signals at the same time
+	*****************************************************************************************************
+	multiple access protocol
+	-distributed algorithm that determines how nodes share channel, i.e., determine when node can trasmit
+	-communication about channel sharing must use channel itself!
+	-e.g., CSMA/CD
+
+MAC Addresses
+-MAC (or LAN or physical or Ethernet) address:
+	*function: used "locally" to get frame from one interface to another physically-connected interface
+	*48-bit MAC address (for most LANs) burned in NIC ROM
+	*e.g.: 1A-2F-BB-76-09-AD (hexadecimal (base 16) notation (each "numeral" represents 4 bits))
+-MAC address allocation administered by IEEE
+-manufacturer buys portion of MAC address space (to assure uniqueness)
+-each interface on LAN
+	*has unique 48-bit MAC address
+
+Ethernet Frame Structure:
+preamble | destination address | source address | type | data (payload) | CRC
+
+-addresses: 6 byte source, destination MAC addresses
+	*if adapter receives frame with matching destination address, or with broadcast address (e.g., ARP packet), it passes data in frame to network layer protocol
+	*otherwise, adapter discards frame
+-type: indicates higher layer protocol
+	*mostly IP
+-CRC: cyclic redundancy check at receiver
+	*error detected: frame is dropped
+
+
+Week 5, Lecture 8 - Architecture 6, Switches
+
+Ethernet Switch
+-Switch is a link-layer device: takes an active role
+	*store, forward Ethernet frames
+	*examine incoming frame's MAC address, selectively forward frame to one-or-more outgoing links
+	*modern switches are full-duplex (no interference)
+		-no need for CSMA/CD
+-Transparent: hosts unaware of presence of switches
+-Plug-and-play, self-learning
+	*switches do not need to be configured
+-Hosts have dedicated, direct connection to switch
+	*each link is its own collision domain
+-Switching: A-to-A' and B-to-B' can transmit simultaneously, without collisions
+	*but A-to-A' and C to A' can not happen simultaneously
+-Q: how does switch know A' reachable via interface 4, B' reachable via interface 5?
+	A: each switch has a switch table, each entry:
+		*MAC address of host, interface to reach host, time stamp
+-Q: how are entries created, maintained in switch table?
+	A: self learning
+-frame destination, A', location unknown: flood
+-destination A location known: selectively send on just one link
+
+self-learning switches can be connected together:
+Q: sending from A to G - how does S1 know how to forward frame destined to G via S4 and S3?
+	A: self learning! (works exactly the same as in single-switch case!)
+
+Switch Poisoning
+-Fact: switch table capacity is limited
+-Attacker sends many frames with bogus source MAC addresses
+	*No room for legitimate MAC addresses
+	*Newly received legitimate frames are flooded
+		-Attacker runs a sniffer on compromised host
+
+
+Week 5, Lecture 9 - Architecture 7 Layer 3 - Intro
+
+-application: support network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-process data transfer
+	*TCP, UDP
+-network: routing of datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+Network-layer services and protocols
+-Transport segments from sending to receiving host
+	*Sender: encapsulates segments into datagrams, passes to link layer
+	*Receiver: delivers segments to transport layer protocol
+-Network layer protocols in every Internet device: hosts, routers
+-Router:
+	*Examines header fields in all IP datagrams passing through it
+	*Moves datagrams from input ports to outpur ports to transfer datagrams along end-end path
+
+Two key network-layer functions
+network-layer functions:
+-Routing: determine route taken by packets from source to destination
+	*routing algorithms
+-Forwarding: move packets from a router's input link to appropriate router output link
+**************************************************************************************
+analogy: taking a trip
+-Routing: process of planning trip from source to destination
+-Forwarding: process of getting through single interchange
+
+Network Layer: Internet
+Host, router network layer functions:
+-Path-selection algorithms: implemented in routing protocols
+-ICMP protocol: error reporting, router "signaling"
+-IP protocol: datagram format, addressing, packet handling conventions
+
+The IP hourglass:
+
+HTTP	SMTP	FTP	...	DNS	DHCP
+	TCP		UDP
+		IP				- Internet's "thin waist"
+   Ethernet 5G ... Zigbee WiFi Bluetooth
+	Copper	Radio	Fiber
+
+Internet's "thin waist": 
+-one network layer protocol: IP
+-must be implemented by every (billions) of Internet-connected devices
+
+IP addressing: introduction
+-IPv4 address: 32-bit identifier associated with each host or router interface
+-Interface: connection between host/router and physical link
+	*Router's typically have multiple interfaces
+	*Host typically has one or two interfaces (e.g., wired Ethernet, wireless 802.11)
+
+Layer 3 - IP Addresses
+each interface on LAN
+-has a unique 48-bit MAC address
+-and has a locally unique 32-bit IP address
+-analogy:
+	*MAC address: SSN
+	*IP address: postal address
+-MAC flat address: portability
+	*can move interface from one LAN to another
+	*IP address not portable, depends on IP subnet to which node is attached
+
+IP Spoofing
+-Injecting datagrams into the Internet with a fake source IP address
+-Masquerading as another user
+-Mitigation
+	*End-point authentication
+
+
+Week 5, Lecture 10 - Architecture 8 Layer 3 - Subnets
+
+What's a subnet?
+-device interfaces that can physically reach each other without passing through an intervening router
+-IP addresses have structure:
+	*subnet part (assigned by ARIN): devices in same subnet have common high order bits
+		-e.g., 223.1.1
+	*host part (assigned by network admins): remaining low order bits
+		-e.g., .1, .2, .3, .4, .0 (network), .255 (broadcast)
+
+Network Address Format
+-a.b.c.d/x
+	-x is # bits in subnet portion of address
+	-x is called the subnet mask
+	-e.g., 223.1.1.0/24
+-subnet mask bit representation:
+	e.g. (x = 24 -> 255.255.255.0)
+-CIDR: Classless InterDomain Routing
+	-(pronounced "cider")
+	-subnet portion of address of arbitrary length
+
+Recipes for defining subnets:
+-detach each interface from its host or router, creating "islands" of isolated networks
+-each isolated network is called a subnet
+
+
+Week 5, Lecture 11 - Architecture 9 ARP
+
+ARP: address resolution protocol
+Question: how to determine interface's MAC address, knowing its IP address?
+-ARP table: each IP node (host, router) on LAN has table
+	*IP/MAC address mappings for some LAN nodes:
+		<IP address; MAC address; TTL>
+	*TTL (Time to Live): time after which address mapping will be forgotten (typically 20 minutes)
+-Remember: hosts only accept packets that are destined to them (Destination MAC address in Ethernet Frame matches its MAC)
+	*if destination MAC is broadcast, every host will accept the Ethernet (layer 2) frame
+-Broadcasted ARP queries are accepted but ignored by all nodes on the network EXCEPT the node with IP address that matches the IP address in the ARP query
+-ARP poisoning
+
+
+Week 5, Lecture 12 - Architecture 10 ICMP
+
+ICMP: Internet Control Message Protocol
+-used by hosts and routers to communicate network-level information
+	*error reporting: unreachable host, network, port, protocol
+	*echo request/reply (used by ping)
+-network-layer "above" IP:
+	*ICMP messages carried in IP datagrams
+-ICMP message: type, code plus first 8 bytes of IP datagram causing error
+
+Traceroute and ICMP
+-source sends sets of UDP segments to destination
+	*1st set has TTL = 1, 2nd set has TTL=2, etc.
+-datagram in nth set arrives to nth router:
+	*router discards datagram and sends source ICMP message (type 11, code 0)
+	*ICMP message possibly includes names of router & IP address
+-when ICMP message arrives at source: record RTTs
+-stopping criteria:
+	*UDP segment eventually arrives at destination host
+	*destination returns ICMP "port unreachable" message (type 3, code 3)
+	*source stops
+
+
+Week 5, Lecture 13 - Architecture 11, Node to Node Communication
+
+Determing Next Hop
+-Destination on same subnet?
+	*Local communication (Yes)
+	*Remote communication (No)
+		-Forward frame to Gateway
+
+Determining Next Hop (DestIP on Same Subnet)
+-10.0.01 255.0.0.0 wants to send a message to 10.0.0.2 255.0.0.0
+(destination IP on same subnet -> host determines local communication)
+
+Determining Next Hop (DestIP NOT on Same Subnet)
+-10.0.0.1 255.0.0.0 wants to send a message to 11.0.0.1 255.0.0.0
+(destination IP NOT on same subnet -> host determines remote communication)
+
+Remote Communication (what happens at Gateway)
+Walkthrough: send IP datagram from A to B via R
+-focus on addressing - at IP / Networking layer (datagram) and MAC / Data link layer (frame)
+-assume A knows B's IP address
+-assume A knows IP address of first hop router, R (how?) -> ICMP router discovery message
+-assume A knows R's MAC address (how?) -> ARP
+
+-A creates IP datagram with IP source A, destination B
+-A creates link-layer frame with R's MAC address as destination, frame contains A-to-B IP datagram
+-frame sent from A to R
+-frame received at R, datagram removed, passed up to IP
+-R forwards datagram with IP source A, destination B
+-R creates link-layer frame with B's MAC address as destination, frame contains A-to-B IP datagram
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 6, Lecture 1 - Outline
+
+Outline
+-Numbering Systems
+-Introduction (Network Architecture)
+	*TCP/IP Stack 1, 2, 3
+	*TCP/IP Stack: 4, 5
+-Network Firewalls
+-Port Scanning
+-VPN (Virtual Private Networks)
+-Wireless Networks and Security
+
+
+Week 6, Lecture 2 - Architecture 12, Layer 4 - Introduction
+
+Intenet Protocol Stack Overview
+-application: supporting network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-to-process data transfer
+	*TCP, UDP
+-network: routing on datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+Transport Services and Protocols
+-provide logical communication between application processes running on different hosts
+-transport protocols actions in end systems:
+	*sender: breaks application messages into segments, passes to network layer
+	*receiver: reassembles segments into messages, passesto application layer
+
+Transport vs. Network Layer Services and Protocols
+-network layer: logical communication between hosts
+-transport layer: logical communication between processes
+**********************************************************
+Household analogy:
+Alice's household sending letters to Bob's household:
+-hosts = houses
+-processes = household members
+-app messages = letters in envelopes
+-segments = letter pages
+-transport protocol = Alice and Bob who demultiplexes to in-house members
+-network-layer protocol = postal service
+
+Two Principal Internet Transport Protocols
+1) TCP: Transmission Control Protocol
+-reliable, in-order delivery
+-flow control
+-connection setup
+2) UDP: User Datagram Protocol
+-unreliable, unordered delivery
+-no-frills extension of "best-effort" IP
+
+Sockets
+-process sends/receives messages to/from its socket
+-socket analogous to door
+	*sending process shoves message out door
+	*sending process relies on transport infrastructure on other side of door to deliver message to socket at receiving process
+	*two sockets involved: one on each side
+
+Addressing Processes
+-to receive messages, process must have identifier
+-host device has unique 32-bit IP address
+-Q: does IP address of host on which process runs suffice for identifying the process?
+	A: no, many processes can be running on the same host
+-identifier includes both IP address and port numbers associated with process on host
+-example port number:
+	*HTTP/web server; 80
+-to send HTTP message to www.google.com web server:
+	*IP address: 172.217.12.206
+	*port number: 80
+
+Transport Layer Actions
+Sender:
+-is passed an application-layer message
+-determined segment header fields values
+-creates segment
+-passes segment to IP
+Receiver:
+-receives segment from IP
+-checks header values
+-extracts application-layer message
+-demultiplexes message up to application via socket
+
+
+Week 6, Lecture 3 - Architecture 13, Layer 4 - TCP
+
+TCP (Transmission Control Protocol)
+-connection-oriented:
+	*3-way handshaking (exchange of control messages)
+	*initializes sender and receiver state before data exchange
+-reliable, in-order byte stream:
+	*Reliable: Guaranteed delivery of packets sent by sender (receiver acknowledges delivery by sending sender an ACK packet for each received data packet)
+	*In-Order: Data is guaranteed to arrive to upper layer protocol (e.g., HTTP) in order, never out-of-order
+	*E.g., HTTP and FTP both use TCP
+-flow controlled:
+	*sender will not overwhelm receiver
+
+
+Week 6, Lecture 4 - Architecture 14, Layer 4 - TCP Attacks
+
+Attacks Against TCP
+-SYN flooding
+-Sequence prediction
+
+SYN Flooding:
+FACTS
+-Server allocates resources when SYN is received
+-Server waits for sometime for an ACK for the SYNACK
+-If ACK never received, it only then terminates the half-open connection
+************************************************************************
+-Attacker sends tons of SYNs but never sends ACKs
+-A type of DoS (Denial of Service) attack
+-Amplified if DDoS (Distributed Denial of Service)
+-Mitigation
+	*SYN cookies (implemented by default by OS)
+
+Sequence Number Prediction
+-Attacker guesses the initial sequence number of server and Client A's IP
+-Attacker sends SYN with victim's IP as source IP
+	*IP spoofing
+-Server replies to victim
+-Attacker races with victim to send an ACK to server and establish the connection
+	*Masquerades as victim during entire TCP session and sends commands
+
+
+Week 6, Lecture 5 - Architecture 15, Layer 5 - Intro & HTTP
+
+Intenet Protocol Stack Overview
+-application: supporting network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-to-process data transfer
+	*TCP, UDP
+-network: routing on datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+Creating A Network App
+Write programs that:
+-run on (different) end systems
+-communicate over network
+-e.g. web server software communicates with browser software
+No need to write software for network-core devices
+-applications on end systems allows for rapid app development, propagation
+
+Example Network Apps
+-Web
+-Email
+-Social networking
+-Text messaging
+-Multi-user network games
+-Streaming stored video (Youtube, Hulu, Netflix)
+-P2P file sharing
+-Voice over IP (e.g., Skype)
+-Real-time video conferencing (e.g., Zoom)
+-Internet search
+-Remote login
+-...
+
+HTTP Overview
+HTTP: hypertext transfer protocol
+-Web's application-layer protocol
+-Client/server model:
+	*Client: browster that requests, receives, (using HTTP protocol), and "displays" Web objects
+	*Server: Web server sends (using HTTP protocol) objects in response to requests
+
+HTTP Common Response Status Codes
+200 OK
+	request succeeded, requested object later in this msg
+301 Moved Permanently
+	requested object moved, new location specified later in this msg
+	(Location:)
+400 Bad Request
+	request msg not understood by server
+404 Not Found
+	requested document not found on this server
+505 HTTP Version Not Supported
+
+
+Week 6, Lecture 6 - Architecture 16, Layer 5, DNS & DHCP
+
+Intenet Protocol Stack Overview
+-application: supporting network applications
+	*HTTP, FTP, DNS, SMTP
+-transport: process-to-process data transfer
+	*TCP, UDP
+-network: routing on datagrams from source to destination
+	*IP, routing protocols
+-link: data transfer between neighboring network elements
+	*Ethernet (802.3), 802.11 (WiFi)
+-physical: bits "on the wire"
+
+DNS: Domain Name System
+Q: how to map domain name to IP address?
+1. Client app requesting IP for www.google.com sends to local DNS
+2. Local DNS server sends to root DNS server
+3. Root DNS server sends to local DNS server
+4. Local DNS server sends to .com TLD DNS server
+5. .com TLD DNS server sends to local DNS server
+6. Local DNS sevrer sends to www.google.com / authoritative DNS server dns.google.com
+7. www.google.com / authoritative DNS server dns.google.com sends to local DNS server
+8. Local DNS server to client app requesting IP for www.google.com
+
+Attacks On DNS
+DDoS attacks
+-flood root servers with traffic
+-flood TLD servers
+**********************************
+Spoofing attacks
+-intercept DNS queries, returning bogus replies
+	*DNS cache poisoning
+	*Mitigation: DNSSEC authentication services
+
+DHCP: Dynamic Host Configuration Protocol
+How does host get IP address?
+-hard-coded by sysadmin in config file (e.g., /etc/rc.config in UNIX)
+-DHCP: Dynamic Host Configuration Protocol: dynamically get address from a server
+	*"plug-and-play"
+-Typically, DHCP server will be co-located in router, serving all subnets to which router is attached
+-Arriving DHCP client needs address in this network
+
+DHCP: More Than IP Addresses
+DHCP can return more than just allocated IP address on subnet:
+-address of first-hop router for client
+-name and IP address of local DNS server
+-network mask (indicating network versus host portion of address)
+
+
+Week 6, Lecture 7 - Firewalls 1, Intro
+
+Firewalls Outline
+-Introduction
+-Packet Filtering Firewalls
+-Other Types of Firewalls
+
+Firewall
+Isolates organization's internal network from larger Internet, allowing some packets to pass, blocking others
+
+Firewall vs IDSes (Intrusion Detection Systems)
+-Firewall
+	*looks outwardly (from the outside) for intrusions in order to stop them from happening
+	*limit access between networks and do not signal an attack from inside the network
+-IDS (Intrusion Detection System)
+	*evaluates a suspected intrusion once it has occurred and may signal an alarm
+	*looks for attacks that originate from within a system
+
+Example Network
+multiple IDSs: different types of checking at different locations
+
+Firewall Types
+-Packet Filters
+	*Stateless
+	*Stateful
+-Others
+	*Application Layer Gateway (ALG)
+	*Proxy Server
+	*NAT
+	*Next Generation Firewalls (NGFW)
+
+
+Week 6, Lecture 8 - Firewalls 2, Packet Filters
+
+Packet Filtering Firewall
+-internal network connected to Internet via router firewall
+-filters packet-by-packet, decision to forward/drop packet based on:
+	*source IP address, destination IP address
+	*Protocol ID (e.g., UDP = 17, TCP = 6, ICMP = 1)
+	*TCP/UDP source, destination port numbers
+	*ICMP message type (e.g., ICMP echo requests -> type = 0)
+	*TCP SYN and ACK bits
+
+Access Control Lists (ACLs)
+ACL: table of rules, applied top to bottom to incoming packets:
+	(action, condition) pairs
+
+Stateless Packet Filtering: Common Settings Examples
+-Example 1: block incoming and outgoing datagrams with IP protocol field = 17 and with either source or dest port = 23
+	*result: all incoming, outgoing UDP flows and telnet communications and blocked
+-Example 2: block inbound TCP segments with ACK=0
+	*result: prevents external clients from making TCP connections with internal clients, but allows internal clients to connect to outside
+
+Stateless Packet Filtering: More Examples
+Policy						Firewall Setting
+-No outside web access				-Drop all outgoing packets to any IP address, port 80
+-No incoming TCP connections, except those	-Drop all incoming TCP SYN packets to any IP except
+for institution's public web server only	130.207.244.203, port 80
+-Prevent Web-radios from eating up the av-	-Drop all incoming UDP packets - except DNS and router
+ailable bandwidth				broadcasts
+-Prevent your network from being tracerouted	-Drop all outgoing ICMP TTL expired traffic
+
+Stateless Packet Filtering
+-heavy handed tool
+	*admits packets that "make no sense," e.g., port = 80, ACK bit set, even though on TCP connection established
+
+Stateful Packet Filtering
+-track status of every TCP connections
+	*track connection setup (SYN), teardown (FIN): determine whether incoming, outgoing packets "make sense"
+	*track TCP states such as Listen, SYN-Sent, SYN-Received, Established, Fin-Wait, Close-Wait, Time-Wait, Closed, etc.
+	*timeout inactive connections at firewall: no longer admit packets
+-aware of IP spoofing
+-ACL augmented to indicate need to check connection state table before admitting packet
+
+Packet FIlters (Pros/Cons)
+Pros
+-fairly effective and transparent
+-filters a lot of unwanted traffic
+-cheap
+Cons
+-difficult to configure
+-reduces network performance
+-inspects segment or datagram headers only
+
+
+Week 6, Lecture 9 - Firewalls 3, Other
+
+Firewall Types
+Packet filters
+-stateless
+-stateful
+Others
+-application layer gateway (ALG)
+-proxy server
+-NAT
+-next generation firewalls (NGFW)
+
+Application Layer Gateways (ALGs)
+-filter packets based on application header fields as well as on IP/TCP/UDP fields
+-filter packets on application data as well as on IP/TCP/UDP fields
+-example: allow select internal users to telnet outside
+1. require all telnet users to telnet through gateway
+2. for authorized users only, gateway sets up telnet connection to dest host. Gateway relays data between 2 connections
+3. router/filter blocks all telnet connections not originating from gateway
+
+Proxy Server
+-intercepts all messages or application level messages that enter and leave the network
+-filters based on URL, file type, or content keyword, etc.
+
+NAT: Network Address Translation
+NAT: all devies in local network share just one IPv4 address as far as outside world is concerned
+
+Next Generation Firewalls (NGFW)
+-Deep Packet Inspection (DPI)
+	*Looks beyond protocol information (i.e., examine data as well as header info)
+-Deep Content Inspection (DCI)
+	*A form of network filtering that examines an entire file, as it passes an inspection point, searching for viruses, spam, data loss, key words, or other content level criteria
+	*Considered the evolution of DPI, with the ability to look at what the actual contentcontains instead of focusing on individual or multiple packets
+-Unified Threat Management
+	*One integrated package which provides: Firewall, intrusion detection, Antimalware spam and content filtering, etc.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 7, Lecture 1 - Outline
+
+Outline
+-VPNs (Virtual Private Networks)
+-Wireless Networks and Security
+
+
+Week 7, Lecture 2 - VPNs (Introduction)
+
+Introduction
+-Virtual network built over existing physical networks (e.g., the Internet)
+-All traffic is private (i.e. encrypted)
+-Goal: protect traffic carried over the public Internet
+
+Use Cases
+-Remote users
+-Satellite office / Separate divisions
+-Why VPN?
+	*Building your own physical network is very costly and not scalable
+
+Tunneling
+VPN Connection
+-Client-side
+	*VPN client software
+-Server-side
+	*VPN server software
+	*VPN Appliance
+	*Firewall/VPN
+	*Router w/ VPN
+-Encapsulates IP traffic hiding source/destination
+
+Additional Benefits
+-Places your activities behind RIT's firewalls
+-Tags your traffic as originating from organization's network
+-Access to services and resources limited to organization
+-Access to certain licensed software controlled by source IP address
+
+
+Week 7, Lecture 3 - VPNs 2, Protocols
+
+Tunneling Protocols
+-PPTP (Point-to-Point Tunneling Protocol)
+-L2TP (Layer 2 Tunneling Protocol)
+-IPsec
+-SSL-based
+
+PPTP (Point-to-Point Tunneling Protocol)
+-Old and insecure
+	*Authentication Key can be cracked in no time with today's computers
+		-Uses MS_CHAPv2 (RFC 2759) for authentication which is a very old authentication protocol introduced in NT4.0 SP4 and Windows 98
+		-Uses DES to encrypt the authentication key
+	*Provides no data integrity
+-Still widely used
+
+L2TP (Layer 2 Tunneling Protocol)
+-L2TP alone does NOT provide encryption or authentication
+	*L2TP/IPSec
+
+IPSec
+-A VPN client software is usually installed on remote client devices
+-IPsec provides
+	*Confidentiality
+		-3DES/AES/...
+	*Data integrity
+		-SHA1/SHA2/..
+	*Origin authentication
+		-HMAC
+	*Replay attack prevention
+		-Sequence number
+
+SSL (Secure Socket Layer) VPN
+-Traffic is encrypted using SSL/TLS
+-Two types:
+	*SSL Portal VPN
+		-All you need is a web browser
+		-Does not require a specialized client software (clientless)
+	*SSL Tunnel VPN
+
+
+Week 7, Lecture 4 - Wireless 1 (Introduction)
+
+Elements Of A Wireless Network
+Wireless hosts
+-laptop, smartphone, IoT
+-run applications
+-may be stationary (non-mobile) or mobile
+Base station
+-typically connected to wired network
+-relay - responsible for sending packets between wired network and wireless host(s) in its "area"
+	*e.g., cell towers, 802.11 access points
+Wireless link
+-typically used to connect mobile(s) to base station, also used as backbone link
+-multiple access protocol coordinates link access
+-various transmission rates and distances, frequency bands
+Infrastructure mode
+-base station connects mobiles into wired network
+-handoff: mobile changes base station providing connection into wired network
+Ad hoc mode
+-no base stations
+-nodes can only transmit to other nodes within link coverage
+-nodes organize themselves into a network: route among themselves
+
+Wireless Network Taxonomy
+
+			Single Hop			Multiple Hops
+Infrastructure	host connects to base station	host may have to relay through several
+(e.g., APs)     (WiFi, cellular) which connects	wireless nodes to connect to larger
+		to larger Internet		Internet: mesh/sensor net
+
+No Infrastruc-	No base station, no connection 	No base station, no connection to larger
+ture/Ad Hoc	to larger Internet (Bluetooth,	Internet. May have to relay to reach other	
+		ad hoc nets)			a given wireless node MANET, VANET
+
+
+Week 7, Lecture 5 - Wireless 2, WiFi & Bluetooth
+
+802.11 LAN Architecture
+-wireless host communicates with base station
+	*base station = access point (AP)
+-Basic Service Set (BSS) (aka "cell") in infrastructure mode contains:
+	*wireless hosts
+	*access point (AP): base station
+
+802.11: Channels, Association
+-spectrum divided into channels at different frequencies
+	*AP admin chooses frequency for AP
+	*interference possible: channel can be same as that chosen by neighboring AP!
+-arriving host: must associate with an AP
+	*scans channels, listening for beacon frames containing AP's name (SSID) and MAC address
+	*selects AP to associate with
+	*then may perform authentication
+	*then typically run DHCP to get IP address in AP's subnet
+
+Personal Area Networks: Bluetooth (IEEE 802.15.1)
+-less than 10m diameter
+-replacement for cables (mouse, keyboard, headphones)
+-ad hoc: no infrastructure
+-master controller/clients devices
+-2.4-2.5 GHz radio band, up to 3 Mbps
+
+
+Week 7, Lecture 6 - Wireless 3, Security
+
+Wireless Security Challenges/Goals
+-Challenges
+	*Broadcast nature of wireless signals
+		-Traffic sniffing/eavesdropping (passive attack)
+	*Resource-constrained devices
+		-Goal: design light-weight protocols and algorithms (encryption algorithms, authentication algorithms, hashing functions, etc.)
+-Goals
+	*Same security services/goals as in wired networks
+		-CIA Triad
+			*Confidentiality - mainly to protect against eavesdropping attempts
+			*Integrity
+			*Availability - attacks against availability: jamming - a type of active attack
+		-AAA (Authentication, Authorization, Accounting)
+
+IEEE 802.11 Security Protocols
+-WEP (Wired Equivalent Privacy)
+-WPA (WiFi Protected Access)
+-WPA2
+-WPA3
+
+WEP (Wired Equivalent Privacy)
+-Introduced in 1999 (deprecated)
+-Confidentiality
+	*Uses static encryption keys shared by all devices on network (RC4)
+	*Can deduce key in less than three seconds
+	*Ready built tools to crack the key
+-No or weak authentication
+
+WPA (WiFi Protected Access)
+-Introduced in 2003
+-Confidentiality
+	*Uses Temporal Key Integrity Protocol (TKIP) to scramble keys
+		-Key constantly changing
+		-RC4-based 128-bit encryption key from a 256-bit shared key/passphrase
+-Authentication provided
+	*WPA Personal/PSK (Pre-Shared Key)
+		-Passphrase of 8 to 63 printable ASCII characters
+	*WPA Enterprise/Full
+		-Uses 802.1x protocol
+		-Requires a RADIUS authentication server
+
+WPA2
+-Introduced in 2004
+-AES-based encryption mode with strong security
+-Authentication provided (same as WPA)
+	*WPA2 Personal/PSK (Pre-Shared Key)
+		-Possible attack: brute force the passphrase
+			*Fixed in WPA3
+		-WPA2 Enterprise/Full
+
+Bluetooth Security
+-Encryption and pairing
+	*Prior to Bluetooth 2.1
+		-SAFER+
+	*Current
+		-AES, Elliptic Curve
+-Pairing methods
+	*Numeric comparison
+	*Passkey entry
+	*Just works
+	*Out of band
+-Implementation vulnerabilities
+	*Bluejacking - display unsolicited messages
+	*Bluesnarfing - unauthorized access, stealing data
+	*Etc.
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 8, Lecture 1 - Compliance and Regulatory Frameworks in Cybersecurity (Part 1)
+
+Topic Overview
+By the end of this unit of lectures, you will know:
+-What a regulatory framework is, in information security context
+-Why these frameworks exist, and who they apply to
+-How to identify relevant cybersecurity frameworks for different organizational scenarios
+-How different compliance frameworks can overlap
+-Examples of legal directives (executive and legislation) that apply to US entities, and non-binding directives that offer guidances
+
+Frameworks
+Sets of...
+-Guidelines and controls
+-Best practices
+-Verifiable processes
+Manage the cybersecurity risk of organizations in a common language
+
+Why are they needed?
+-To prevent problems (or damage/loss, in the case of problems)
+	*Internal stakeholders leverage them to protect data, individuals, assets
+	*Control risk
+	*Best practices in broad or specific settings
+-To evaluate security posture of entitites
+	*External auditors
+-To attest to the following of regulation (government bodies want to minimize overall risk to critical infrastructure)
+
+Types of compliance
+State-mandated vs. voluntary/advisory
+-NIST (CSF) Framework for Improving Critical Infrastructure CyberSecurity
+	*Voluntary in general for private entities
+	*Presidential directive orders federal (civilian) agencies to follow
+	*NIST Special Publication 800-53 more specific
+		-FISMA act 2014 specifies NIST develop standard for federal agencies
+-Payment Card Indsutry Data Security Standard (PCI DSS)- mandated for business processing card data
+
+Sector-Specific Regulation Examples
+HIPAA Compliance Security Rule (mandated for health sector)
+-Electronic Protected Health Information (ePHI) - at rest, in use, in transmission
+NERC CIP (North American Electric Reliability Corporation (NERC) Critical Infrastructure Protection (CIP))
+-Specific to utility providers of Bulk Electric System
+-Audit trails for devices, Industrial Control System components
+-Asset mapping, access management
+
+Summary
+General/Broad Frameworks
+-National Institute of Standards and Technology (NIST) Framework for Improving Critical Infrastructure Cybersecurity (NIST CSF)
+-ISO/IEC 27001/27002 (ISO)
+-Center for Internet Security Critical Security Controls (CIS)
+
+Compliance
+-Requires understanding of several possible legal mandates per organization
+
+
+Week 8, Lecture 2 - Compliance and Regulatory Frameworks in Cybersecurity (Part 2: NIST Cybersecurity Framework)
+
+NIST CSF Core
+-General framework, managing risk
+-Multiple categories (Recover, Identify, Protect, Detect, Respond... Cybersecurity Framework Version 1.1)
+-Numbered controls within each Category
+-References specialized Regulatory docs like PCI-DSS, SP 800-53, 800-171, and others, as examples
+-40ish pages instead of hundreds
+-Concept: Tiers and profiles
+
+CSF Concepts (Core, Tiers, Profile)
+Tiers:
+-Context/rigor/importance/budget
+Profile:
+-Mapping Core controls to the organization and its resources
+
+NIST CSF Core
+-Identify (ID) Categories:
+	*Asset Management (ID.AM)
+	*Business Environment (ID.BE)
+	*Risk Assessment (ID.RA)
+	*Supply Chain Risk Management (ID.SC)
+	*Governance (ID.GV)
+-Detect (DE) Categories:
+	*Anomalies and Events (DE.AE)
+	*(DE.CM) Security Continuous Monitoring
+-Respond (RS) Categories:
+	*RS.CO - Communications
+	*RS.RP - Response Planning
+	*RS.MI - Mitigation
+
+To summarize...
+-NIST produces lots of standards documents, notably: the CyberSecurity Framework allows critical infrastructure orgs to plan for and manage digital risk in terms of standards, creating target profiles as organization goals
+-Federal regulation (FISMA) requires certain levels of compliance with standards like the ones CSF references, in federal agencies
+-Documents like NIST IR 8170 provide details on how agencies can use the framework
+-As you saw in reference docs, there is often overlap between standards, which can be used in parallel
+-Achieveing compliance with e.g., ISO can be part of (or equal to) compliance with say, 800-53 sections
+-Sometimes, products need to meet standards criteria, to satisfy regulations (see Common standard and DoD)
+-https://www.nist.gov/itl/current-fips)
+	*Current Federal Information Processing specs
+
+
+Week 8, Lecture 3 - Compliance and Regulatory Frameworks in Cybersecurity (Part 3a - NIST SP 800-53)
+
+Concepts and Definitions
+-Regulatory requirements 
+	*Legal/compliance obligation. In Federal Agencies, this can be of the form:
+	*https://www.whitehouse.gov/sites/whitehouse.gov/files/omb/circulars/A130/a130revised.pdf
+-Security Controls
+
+AU-4 (Control Identifier)	Audit Storage Capacity (Control Name)
+	(Base Control) -> Control: Allocate audit record storage capacity to accommodate [Assignment: organization-defined audit record retention requirements] <- (Organization-defined Parameter).
+	Discussion: Organizations consider the types of auditing to be performed and the audit processing requirements when allocating audit storage capacity. Allocating sufficient audit storage capacity reduces the likelihood of such capacity being exceeded and resulting in the potential loss or reduction of auditing capability
+	Related Controls: AU-2, AU-5, AU-6, AU-7, AU-9, AU-11, AU-12, AU-14, SI-4
+	Control Enhancements:
+	(1) Audit Storage Capacity | Transfer to Alternate Storage
+		(Control Enhancement) Discussion: Off-loading is a process designed to preserve the confidentiality and integrity of audit records by moving the records from the primary system to a secondary or alternate system. It is a common process in systems with limited audit storage capacity; the audit
+		storage is used only in a transitory fashion until the system can communicate with the secondary or alternate system designated for storing the audit records, at which point the information is transferred.
+		Related Controls: None.
+	References: None. <- (Sources for additional information related to the control)
+
+
+Week 8, Lecture 4 - Compliance and Regulatory Frameworks in Cybersecurity (Part 3b)
+
+Who does regulation affect?
+Q: Who needs to worry about cybersecurity, in regulatory compliance sense?
+-Answer changes over time as the internet, technology and government itself matures
+-Answer depends on who/what you are, where you are, and who/what you deal with
+
+Where do laws apply?
+-State laws, Federal, and International
+-Civilian and Gov./Mil
+-Several sectors, different reasons
+-Critical infrastructure, accountability, privacy
+
+Critical Infrastructure
+https://www.cisa.gov/critical-infrastructure-sectors
+-Chemical Sector
+-Commercial Facilities Sector
+-Critical Manufacturing Sector
+-Communications Sector
+-Emergency Services Sector
+-Defense Industrial Base Sector
+-Food and Agriculture Sector
+-Government Facilities Sector
+-Nuclear Reactors, Materials, and Waste Sector
+-Transportation Systems Sector
+
+To name a few...
+-Health Sector: information and function! (privacy, critical systems)
+-Legal Sector: information! (privacy)
+	*must ensure reasonable steps taken to protect clients
+-Military and Intelligence, contractors -- Information! (entire divisions and standards set up for this. see FIPS and NIST 800-X)
+-Financial Sector: Information (and function)!
+-IT services and products (function and infrastructure)
+-Human Resources: everywhere (by state)
+-Critical Infrastructure: Information, function, and information!
+	*16 sectors identified by national gov.
+	*Risk for cybersecurity is risk to operation security of entire nation
+
+But... I Just Run A Small Business
+-Gas Station: Payment Data -> PCI DDS + local laws
+-Restaurant: Payment and employee information -> PCI DDS + many more
+-Credit Reporting Agency: entire nation's personal data -> ISO, FIPS, CIS, more
+-Gaming Website: (privileged) Customer information -> federal + local
+-Broker/E-Commerce: Multiple
+-Dentist: Multiple
+
+Short Answer:
+Everyone who deals with critical function or privileged information 
+(Given the prevalence of networks, electronics, computing machinery in all sectors -- laws often apply. Frameworks help with cybersecurity posture and legal compliance).
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 9, Lecture 0 - Introduction
+
+Identification & Authentication
+ID & Authentication Topics:
+-Identification
+-Authentication
+-Multi factor authentication
+-Mutual authentication
+-Single sign-on
+
+Authentication (with passwords)
+-Proving who you are
+-Password strength
+-Password attacks
+-Password storage
+
+Mutual Authentication
+-Why mutual authentication?
+-Certificates
+	*What
+	*How to create
+	*How to use
+
+
+Week 9, Lecture 1 - Identification
+
+Computer IDs
+-Usernames
+	*"alice", "alice123", alice@gmail.com
+-Special users
+	*root
+		-The system administrator
+	*Daemons
+		-Handle operations, e.g. network, cron jobs
+	*nobody
+		-Owns no files
+		-Default user for unprivileged operations
+		-Web server runs with this mode
+-'id' command with parameter of who
+
+Groups
+-Assign permissions to groups
+	*wheel group: can act as root
+-Stored in /etc/group
+-Display all the groups and their members: groups [uid]
+
+-'groups' command with parameter of group name
+
+Summary
+-User IDs
+-Groups
+
+
+Week 9, Lecture 2 - Authentication Basics
+
+Authentication
+-Proving who you are
+
+Passwords
+-A secret that only the user knows
+-Easily entered into and checked by the computer
+-Usually a string of keyboard chars
+	*But also graphical
+
+Good Passwords
+-Mix of...
+	*Uppercase	Pa$$w0rd
+	*Lowercase	L3tmein!
+	*Numbers	Iloveyou2!
+	*Symbols
+-Long
+-Hard to guess
+-Easy to remember?
+
+Telepathwords
+Preventing weak passwords by reading your mind... Telepathwords weak-password prevention system will try to guess each character of your password before you type it
+
+Summary
+-Password Strength
+-Password Strength Meters
+
+
+Week 9, Lecture 3 - Password Attacks
+
+Guessing Attacks
+-Dictionary attack
+	*Targeted: include personal info
+-Countermeasures
+	*Password strength checkers
+	*Delays and account lockout
+	*Storage 
+
+User Attacks
+-Exploiting password reuse, sharing
+-Default system passwords
+-Stealing written passwords
+-Phishing
+-Countermeasures
+	*User training
+	*Password managers
+
+Other Attacks
+-Sniffing the password
+-Malware
+	*Sniffing keystrokes, stealing from memory
+-Countermeasures
+	*Encryption (in transit)
+	*Anti-malware
+
+
+Week 9, Lecture 4 - Password Storage
+
+Password Storage
+-The server needs the password
+-What if the password DB gets leaked?
+	*SQL injection or other software bug
+	*Password reused on another machine
+	*Backup isn't encrypted
+-Can we encrypt the passwords?
+	*Need a key!
+
+One-Way Hash Function
+-> easy ->
+Input -> Hash Function -> Output
+<- impossible <-
+
+Storing Passwords
+-> easy ->
+Input -> Hash Function -> Output
+<- impossible <-
+
+Checking Passwords: Correct
+-> easy ->
+Input -> Hash Function -> Output
+<- impossible <-
+
+Checking Passwords: Wrong
+-> easy ->
+Input -> Hash Function -> Output
+<- impossible <-
+
+
+Week 9, Lecture 5 - Multifactor Basics
+
+dkyzbz	d??z?z
+rpkqtf	r??qt?
+bsegpp	b???pp
+
+Other Attacks on Passwords
+-Phising
+-Keyloggers
+-Password sharing
+-Writing the password down
+
+Multifactor Authentication
+-Passwords aren't enough!
+	*Are there other ways of proving your identity?
+-Three options
+	*something you know	Passwords, PIN
+	*something you have	Token, phone
+	*someone you are	Biometrics
+
+Advantages of MFA (TFA)
+-Hard to steal both factors (usually)
+-Make phising attacks harder (not impossible)
+-Generally pretty usable (not perfect)
+
+
+Week 9, Lecture 6 - Biometrics
+
+Multifactor Authentication
+-Three options
+	*Something you know	Passwords, PIN
+	*Something you have	Token, phone
+	*Someone you are	Biometrics
+
+Biometrics
+-Fingerprint
+-Facial recognition
+-Iris scan
+-Retina scan
+-Voice
+-Brain scan
+
+Biometrics (Pros/Cons)
+-Pro: Hard to forget or lose
+-Pro: Often fast and easy to use
+-Con: Cannot be replaced easily
+-Con: Accuracy can be low (getting better)
+-Con: Can be copied
+-Con: Privacy
+
+
+Week 9, Lecture 7 - Mutual Authentication Basics
+
+Mutual Authentication
+-Avoiding man-in-the-middle attacks
+
+Certificates
+-Proof that:
+	RIT (rit.edu) is the only entity who can open RIT's Special Lockbox L_RIT
+
+Certificates: Setup
+Trusted entity... Let's Encrypt (Verifier V_LE... "Public Key")
+V_LE to all the different browsers
+
+
+Week 9, Lecture 8 - Certificates
+
+Certificates: Creation
+RIT (rit.edu)					Let's Encrypt (Trusted entity)
+		1. Please give me a certificate ->
+		2. Add this proof to your site <-
+		3. Done. Here's my lockbox ->
+		4. Here's your certificate <-
+
+Certificates: Verification
+Client						RIT (rit.edu)
+		1. Hello. Send you certificate ->
+		2. Here you go <-
+		3. I put a secret in your lockbox ->
+		4. I used your secret to encrypt this message <-
+
+
+Week 9, Lecture 9 - Single Sign-On
+
+Single Sign-On
+1. Authentication Service -> Email, MyCourses, Financial, SIS
+
+Advantages of SSO
+-One password to remember
+-One system for creating, modifying, deleting accounts
+-Easy to integrate TFA
+-One system for tracking authentication activity
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 10, Lecture 1 - Authorization
+
+Learning Objectives
+-define authorization
+-distinguish between authentication and authorization
+-discuss the three authorization principles: least privilege, separation fo privilege, and complete mediation
+
+Authorization
+-Authorization is the type of access you are allowed to have
+	*Pilots can enter cockpits whereas passengers can only enter the passenger compartment
+	*In computing system, whether or not to allow the user to view, edit, delete or create content
+-Authorization is NOT the same as authentication
+	*Post Office example
+
+Authorization Principles
+-Principle of Least Privilege
+-Principle of Separation of Privilege
+-Principle of Complete Mediation
+
+Principle of Least Privilege
+-A user should have exactly those rights needed to perform her job, and no more
+	*Limits damage
+	*Reduces the number of potential interactions
+-Rights should be in effect for the shortest duration possible
+
+Principle of Separation of Privilege
+-Early access should require satisfying more than one condition (also called "separation of duty")
+	*Protects against a single incident leading to compromise
+
+Principle of Complete Mediation
+-all accesses must be checked to ensure they are authorized each time access is requested
+	*decreases the changes of mistakenly giving elevated permissions to the subject
+
+
+Week 10, Lecture 2 - Access Control
+
+Access Control
+-The process of granting or denying specific requests to:
+	*obtain and use information
+	*enter specific physical facilities
+-Key terms
+	*Subject - user (person or system)
+	*Object - thing being accessed (files, tables, another user, cockpit of plane)
+
+Access Control List (ACL)
+-A mechanism that implements access control for a system resource by
+	*listing the subjects that are permitted to access the resource
+	*stating the permissible actions for each subject (access modes)
+
+Access Control Policies
+-Discretionary Access Control (DAC)
+-Mandatory Access Control (MAC)
+-Role Based Access Control (RBAC)
+-Attribute Based Access Control (ABAC)
+
+Discretionary Access Control (DAC)
+-Access control is based on...
+	*the identity of the subject
+	*access rules stating what permissible actions (access modes for each object)
+-Often use an access control matrix
+	*each entry in the matrix indicates
+		-whether the subject has access rights to a particular object
+		-the type of access
+
+Mandatory Access Control (MAC)
+-Restricts access to objects based on the...
+	*sensitivity of the information contained in the object as represented by a security label (clearance, need-to-know, etc.)
+	*formal authorization of subjects to access information of such sensitivity
+
+Role-Based Access Control (RBAC)
+-A model for controlling access to resources where permitted actions on resources are identified with roles rather than with individual subject identities
+
+Attribute-Based Access Control (ABAC)
+-Access control is based on...
+	*attributes of the subject (user)
+	*the object (resource) to be accessed
+	*the current environmental conditions
+
+
+Week 10, Lecture 3 - Logging, Monitoring, and Auditing
+
+Learning Objectives
+When you finish this video you should be able to:
+-define non-repudiation
+-discuss logging and its benefits
+-outline how log data can be used after an incident
+-discuss monitoring and its benefits
+-explain the purpose of a SIEM tool in monitoring
+-discuss auditing and its benefits
+
+Non-Repudiation
+-assurance of the integrity and origin of data
+	*critical comoponents:
+		-authentication and authorization
+		-logging, monitoring, and auditing
+
+Logging
+-All events (activites) that occur in a computing environment should be logged (recorded) to
+	*detect security incidents
+	*reconstruct incidents during an investigation
+	*aid in recovery
+-At minimum, logs should include the:
+	*timestamp
+	*events, status, and/or error codes
+	*service/command/application name
+	*user or system account associated with the event
+	*device used (e.g. source and destination IPs, device identifier, web browser, etc.)
+
+Monitoring
+-maintains visibility and control of data through...
+	*real-time observation of network traffic and system status
+	*collection of logs and system performance data to discern patterns
+-benefits
+	*discover, predict, and prevent security incidents
+	*minimize impact of security incidents
+	*aid in recovery
+-Security Information and Event Management (SIEM) are often used for monitoring
+-SIEM tools provide:
+	*real-time visibility
+	*automatic security event notifications
+	*real-time observation of network traffic and system status
+
+Auditing
+-A systematic and logical evaluation of information systems and the safeguards (controls, processes, etc.) present to protect these systems
+	*part of a risk and compliance program
+-Benefits
+	*identifies susceptibility to threats to data and systems
+	*identifies and evaluates controls in place to protect confidentiality, integrity and availability of data and systems
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 11, Lecture 1 - Software Security - Software Bugs and Vulnerabilities
+
+Learning objectives:
+When you finish this module you should be able to:
+-Understand main concepts of software security, bugs, and vulnerabilities
+-Broadly categorize software security problems
+-Understand the underlying reasons for software vulnerability, and how to remediate
+
+What is software security about?
+Secure design and implementation of all kinds of software, including:
+-Privileged software (operating system, hypervisor, etc.)
+-Native applications (browsers, etc.)
+-Applications run in "virtual machines" (Java, JavaScript, etc.)
+-Interpreted code (SQL, Powershell, etc.)
+-Embedded systems (car engines, TV OS)
+
+How and why is software vulnerable?
+-Software is complex
+	*Complex architectures are hard to test thoroughly
+-Landscape is vast
+	*Different components interacting with environment in various ways
+-Technologies interact
+-Creators do not have security in mind - "make it work" mentality
+	*As opposed to make it securely work
+
+Categorizing the Problems
+1. Memory Corruption	2. Memory leak/information disclosure	3. Logic issues
+-Easier to think in terms of attack scenario or goal:
+	*Execute code/take control/shut things down
+	*Obtain files/rebeal keys
+	*Downgrade security or upgrade permissions
+
+Common Terminology
+-Bugs are implementation-level errors that can be detected and removed. They may be security related!
+-Vulnerabilities are errors that an attacker can exploit. Either bugs or flaws in the design or the implementation. Usually assigned a CVE number (cyberseucirty vulnerabilities and exposures)
+-Explores are malicious codes or portions of malicious code taking advtange of a vulnerability, and are usually the foothold portion of a piece of malware (such as a virus or ransomware)
+
+CitrixMash 2020 - (& other less flattering names)
+-Software: Citrix Application Delivery Controller (ADC), formerly known as NEtScaler ADC, and Citrix Gateway, formerly known as NetScaler Gateway
+-Many appliances, 80,000 organizations running vulnerable Citrix instances
+-Type: Unauthenticated, Path traversal bypass leading to code execution (logic error leading to privileged arbitrary RCE)
+
+Example: Eternal Blue/ MS17-010
+-Bug: MS17-010 (named EternalBlue; leaked spy tool code)
+	*CVE-2017-0144
+	*Remote code execution via SMB (v1) bug / message handling vulnerability
+-Code affected:
+	*Every single Windows version since Windows 2000 (including Windows Server, Windows 8, Windows 10, etc.) --!!
+	*Re-use of vulnerable networking stack
+-Used to exploit by:
+	*Ransomware
+	*Government espionage
+	*Malware in general
+
+Example: Heartbleed
+-SSL/TLS is a core protocol for encrypted communications in the web
+-Heartbleed is a nickname of a bug in the commonly used OpenSSSL implementation of SSL/TLS, v1.0.1 - 1.0.1f. The vulnerable code was release in March 2012. The vulnerability was discovered in March 2014.
+-A carefully crafted packet, a.k.a exploit, causes OpenSSL to read and return memory content of the software. Passwords, secret keys, or other private information may be leaked.
+
+-The goal of software security is to reduce risk from software vulnerabilities.
+-This usually requires a cyclic, careful process of design, review, development, testing, pentesting, feedback, and update
+	*"Security by Design"
+
+Summary
+-Definitions (bugs/vulns/exploits)
+-Types of software
+-Broad categories of vulnerability
+-The secure design workflow
+
+
+Week 11, Software Security - Common Flaws and Methods
+
+Overview
+-Overflows and underflows, format strings
+-Java deserialization
+-Logic error in APIs
+-Web Application Problems
+	*SQL injection
+
+Made possible by...
+-Human security bug / error / vulnerability
+-Software security bug / error / vulnerability
+
+Buffer Overruns "smashing the stack"
+-Mostly prevalent in C and C++ developed software
+-Occurs when a program allows input to write beyond the end of the allocated buffer. The effect of a buffer overrun is anything from a crash to the attacker gaining complete control of the application
+-The core problem is that user data and program flow control information are intermingled for the sake of permonance, and "low-level" languages allow direct access to application memory
+
+Format String Problems
+-Mostly prevalent in C and C++ developed software
+-The root cause of format string bugs is trusting user-supplied input without validation
+-Can also occur when the format strings are read from an untrusted location the attacker controls
+
+Java de-Serialization
+serialization/pickling/marshalling -> object	naive/insecure secure re-constructs (de-serializes)
+
+SQL Injection
+-Structed Query Language (SQL) is a domain-specific language used in programming and designed for managing data held in a relational database management system. It is particularly useful in handling structured data, i.e. data incorporating relations among entitites and variables
+-SQL injection is the placement of malicious code in SQL statements, (usually) via web page input. SQL injection (SQLi), therefore, might destroy your database. SQLi is one of the most common web hacking techniques
+
+Summary
+-Different types of bugs
+-As program environment grows, opportunities for compromise grow
+-Security by design/testing beats rush for solutions
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 12, Lecture 1 - System Security
+
+What is System Security?
+-System security "focuses on the security aspects of systems that are composed of components and connections, and use software"
+-Heavy attention is paid to defense in depth
+-The focal point is on the operating system, operating system components, and their role in securing application software
+
+What is an Operating System?
+-A collection of software that enables users and higher-level applications to execute on hardware
+
+Core Features of an OS
+Process Management:
+-Manage access to the processor to allow application/system software execution
+-Create and manage the data structures needed to track software execution
+Memory Management:
+-Allocate software the RAM needed to execute
+-Load/unload data to/from RAM from disk as needed
+File System Management:
+-Provide an interface that can be used to store data in an organized manner that facilitates easy retrieval by users or software
+Peripheral Management:
+-Ensures that users/application software can make use of devices (including data storage disks) attached to the computer beyond CPU/RAM
+
+Non-Critical Features of Operating Systems
+(Graphical) User Interfaces
+-Most operating systems have users and need a way for users to control execution
+-Operating systems frequently lack graphical interfaces
+-Some lower-level operating systems may lack even command-line interfaces
+Network Management:
+-Operating systems manage the interface between applications and networking interfaces
+-Network I/O isn't fundamentally different from other peripheral communication
+
+
+Week 12, Lecture 2 - High-Level System Security
+
+Terminology
+-Security Subject/Principal
+	*Anything whose identity can be authenticated (users or software)
+-Security Object
+	*Anything that can be accessed
+-Permissions
+	*The rights of a security principal on a security object
+-Reference Monitor
+	*The entity that enforces permissions
+
+Operating System Security Goals
+-Encapsulation: Ensure that resources are grouped into self-contained packages (security objects)
+-Isolation: Ensure that security subjects are kept separated
+-Least Privilege: Provide a granular permission system to facilitate giving users the least access possible
+-Layering: Ensure there are multiple systems of protection to avoid single points of failure
+-Authentication systems to validate identities of security subjects
+-Access controls to restrict access to security objects
+	*Can be host-based (file systems permissions, for example) or network-based (firewalls)
+-Monitoring tools to track behavior of security subjects
+
+Layered Defense in Depth
+-Authentication Systems
+	*Limited, heavily monitored entryways into the system
+-Access Control Systems
+	*Protection mechanisms
+	*Requires encapsulation
+	*Enforces isolation
+	*Facilitates least privilege
+-Monitoring Systems
+	*Track use of the system
+	*Look for violations of isolation or least privilege
+	*Look for other suspicious behaviors
+
+Limitations
+-System Performance
+	*Security controls should not add significant overhead to the system
+-Usability
+	*Security controls should not make the system more difficult to use
+	*Security controls should not require complex configurations
+-Reporting
+	*Security controls should not provide overly verbose or frequent alerts
+-Accuracy
+	*Security controls should not include many false positivies (specificity)
+	*Security controls should not include many/any false negatives (sensitivity)
+
+
+Week 12, Lecture 3 - Authentication, Access Control, and System Security
+
+Review of IAAA
+-Identification: "I am Rob"
+-Authentication: "Here's proof that I'm Rob"
+-Authorization: "You've proven that you're Rob, here's a token that proves you've authenticated. Present this proof when you need access"
+-Accountability: Logging all the uses of Rob's authentication token
+
+Authentication Models
+-Local Authentication
+	*Authentication is handled by the system the user is logging into
+	*Windows: Local Security Authority (LSA) + Security Accounts Manager (SAM)
+		-LSA is the reference monitor
+		-SAM is database holding user information
+	*Linux: Pluggable Authentication Modules (PAM) + flat files (/etc/shadow)
+-Single Sign-On
+	*Authentication is handled remotely by a centralized server
+	*Examples: Active Directory, Kerberos, Lightweight Directory Access Protocol
+
+Windows Local Authentication
+1. User enters credentials (Credential User Interface)
+2. Forwards credentials (Windows Local Security Authority)
+3. Request stored credentials (Security Account Manager Database)
+4. Password hash (Windows Local Security Authority)
+5. Success/Failure (Credential User Interface)
+6. Log in / Error message
+
+Windows Local Security Authority
+-compare stored hash to hash of entered credentials
+-if match, generate access token for user
+-user presents access token to LSA when accessing resources
+
+Windows Single-Sign On (Kerberos)
+1. User enters credentials
+2. Request Ticket Granting Ticket (TGT)
+3. Encrypted TGT from Authentication Server
+4. Try to decrypt TGT with user credentials
+5. Logins in on successful decrypt
+6. Attempt to access application server
+7. TGT + App Ticket Request to Ticket Granting Service
+8. Encrypted App Ticket
+9. Request + Encrypted App Ticket
+10. Try to decrypt ticket with Application Server private key
+11. Access on successful decrypt of ticket
+
+Authorization and Access Control
+Authorization:
+-Local authentication -> Windows Access Token
+-Single sign-on (Kerberos) -> Ticket Granting Ticket & App Ticket
+Reference Monitors:
+-Local authentication
+	*Local Security Authority: Checks access token to see if user is permitted to take action
+-Single sign-on:
+	*Authentication Service: Provides encrypted TGT that grants access on successful decrypt
+	*Ticket Granting Service: Checks if TGT permits user to access application server, issues app ticket
+	*Application Server: Allows access on successful decrypt of app ticket
+
+Security Tradeoffs
+Local Windows Authentication:
+-Faster
+-Does not require network access
+-User management is hard
+	*Imagine having to change passwords on every system!
+	*Imagine having to change permissions on every system
+-Logs are distributed across all systems
+Windows Single Sign-On:
+-Slower
+-Network is single point of failure
+-Domain controller is single point of failure
+-User management is easy
+	*Password reset? No problem!
+	*Employee fired? Access revoked instantly
+-Logs are easier to centrally manage
+
+
+Week 12, Lecture 4 - Isolation and System Security (1)
+
+Bell-LaPadula
+-Formal security model - Bell LaPadula
+-Each security subject has a clearance level
+-Each security object has a classification level
+-Simple Security Condition
+	*A subject can only read an object if and only if the clearance of the subject is greater or equal to the classification of the object
+-Star Property (Paraphrased)
+	*Objects created by a subject inherit their classification level from the clearance level of the subject
+
+Information Classification in Practice
+Government:
+-Sensitive
+-Classified
+-Secret
+-Top Secret
+	*Sensitive Compartmented Information (SCI)
+Civilian:
+-Proprietary
+-Private
+-Confidential
+-Sensitive
+
+Rings of Protection in Operating Systems
+Applications (and users, including highly privileged users) - Ring 3
+Device drivers - Ring 2
+Device drivers - Ring 1
+Kernel - Ring 0
+
+
+Week 12, Lecture 5 - Isolation and System Security (2)
+
+Isolating User Applications
+-A program is a series of inert instructions that resides on a hard disk
+-A running program resides in RAM and is called a process
+-Process execution is controlled by the OS through a process control block
+-Process control block includes...
+	*A unique identifier for the process
+	*The permissions of the process (usually inherited from the users that executed it)
+		-Windows embeds the user's access token
+	*The memory the proces is using
+	*The resources (files, network connections, etc.) the process is accessing
+-Isolation is mitigated by passing all requests to access these through the kernel
+-Kernel acts as a reference monitor, making access control decisions
+
+Advanced Isolation
+-Virtualization
+	*Create "virtual machines" that think they're running on different hardware
+		-Virtual machine is the "guest system"
+		-Underlying system is the "host system"
+	*Install different applications on each virtual machine
+	*Hypervisors are software that trick virtual machines into thinking they have their own hardware
+		-Examples: VirtualBox, VMware, ESX, Xen, etc.
+-Containerization
+	*Use access control settings to trick each piece of software into thinking it's the only one on the operating system
+	*Examples: Docker, chroot
+
+Virtualization vs. Containerization
+Type 1 Hypervisors:
+-Hypervisor IS the host operating system
+-Emulates hardware
+-Each isolated entity (VM) has its own operating system
+-Guest cannot access host
+-Host cannot access guest
+
+Containerization Engines:
+-Engine is software on the host
+-No emulation (faster)
+-Each isolated entity (container) has its own file system
+-Guest cannot access host
+-Host can access guest
+
+Week 12, Lecture 6 - Malware
+
+Review of Exploitation
+-Vulnerability
+	*Gap in camera coverage
+-Exploit
+	*Path the thief takes to avoid the cameras
+-Payload
+	*The credit card skimmer left on the ATM
+
+Anatomy of a Hack: UK NHS (2017)
+-Vulnerability
+	*MS17-010
+	*Buffer Overflow in SMB1
+	*Window SMB service runs as SYSTEM
+-Exploit
+	*Eternal Blue
+	*(Alleged) NSA exploit leaked by ShadowBrokers
+-Payload
+	*WannaCry Ransomware
+
+Properties of Modern Malware (1)
+-Virus (very rare)
+	*Injects code into a real application
+	*Whenever user runs the real application, the virus runs
+-Not-Virus
+	*Standalone executable code distributed to the system
+	*Needs some other method of persistence
+
+Properties of Modern Malware (2)
+-Memory Resident or Fileless
+	*Only ever exists in RAM
+	*Hard to detect - antivirus commonly monitors files
+	*Highly volatile - when the computer reboots, malware goes away
+-Disk-Resident or File-Based
+	*Program or code is written to the hard disk at some point
+
+Modern Malware Functions
+-Worms: Malware is self replicating
+-Trojan: Malware provides remote access to adversary
+	*Without piggy-packing on legitimate forms of access
+-Ransomware: Malware disables system functionality until ransom is paid
+	*Most commonly, ransomware encrypts files on the hard drive
+-Adware: Malware displays unwanted advertisements to the user
+-Spyware: Stealthy malware sends data back about the users' activities
+	*Common in intelligence/police activities and domestic abuse situations
+-"Exotic" Malware: Usually, customized malware with functionality beyond this list
+
+Trojans: Bind Shells vs. Reverse Shells
+-Bind shells require that attacker traffic be routed to target
+	*Usually, target is Internet-facing
+-Bind shells are defeated by...
+	*Network Address Translation
+	*Ingress firewalls
+-Reverse shells include attacker IP address
+-Reverse shells are defeated by egress firewalls
+
+
+Week 12, Lecture 7 - System Monitoring (1)
+
+Everybody Logs!
+Windows: Windows Event Viewer:
+-Application: Logs related to software on the local machine
+-Security: Access control logs (logins, elevating privileges, etc.)
+-Setup: Windows system configuration logs (updates, for example)
+-System: Messages generated by Windows during execution
+-Forwarded Events: Logs sent by other computers (usually in domain environments)
+Linux: Text files stored in /var/log:
+-/var/log/auth.log: Stores login information
+-/var/log/kern.log: Stores kernel events, errors, etc.
+-/var/log/syslog: Stores global system activity data
+-Application specific logs (ex: /var/log/apache2/access.log)
+	*Varies by application
+
+Logging Architecture
+-Local logging: each computer stores their own logs
+	*Difficult to access (must access each host)
+	*May not provide a full picture
+	*Vulnerable to manipulation
+-Centralized logging: computers forwards logs to a central server
+	*Easier to access
+	*Improved analytics
+	*More difficult to manipulate
+
+SIEMs
+-SIEM: Security Incident Event Manager
+-Largely focused on detection not prevention
+-Usually provides...
+	*Log Aggregation/Correlation
+	*Analytical tools
+	*Visualization tools
+	*Automatic alerting
+-Core tool in security operations centers
+
+
+Week 12, Lecture 8 - System Monitoring (2)
+
+Anti-Virus/Anti-Malware Software
+-Primary detection and prevention mechanism for many systems
+-More commonly used on workstations (desktops, laptops) that servers
+-Two primary detection mechanisms
+	*Signature-based detection
+	*Anomaly-based detection
+-...Anti-virus/Anti-malware is a surprisingly hard problem
+-Very difficult to get independent statistics about effectiveness
+
+Signature-Based Detection
+-Anti-virus classifies something as malware based on static attributes of that thing
+-Largely focused on attributes of files
+-Example attributes
+	*File name
+	*File hash
+		-May hash parts different parts of a file
+-Generally pretty easy to fool
+	*Small changes to the malware can create big changes to the signature
+-Requires frequent updates - anti-virus needs to download new signatures
+
+Anomaly-Based Detection
+-Looks at what software does when it executes
+-Potential suspicious behaviors
+	*Trying to access sensitive files
+	*Opening network ports
+	*Outbound network connections
+-Monitoring software behavior impacts software perfomance, so it can only be done for a limited time
+-Relatively easy to bypass by including innocuous behavior
+
+System Security Wrap-Up:
+System Security Components
+-Authentication systems stop malicious actors from getting in
+-Authorization tokens allow for logging of user activity
+-Access controls isolate users and software from each other and from sensitive parts of the system
+	*Limits adversary access if users/software are compromised
+-Hypervisors (virtualization) and containerization isolate systems from each other
+-Monitoring tools detect malicious behavior and may prevent some malware execution
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 13, Lecture 1 - Information Security Policy
+
+What is an Information Security Policy
+-A document that states the organization's views on how to protect information security
+-Motivations
+	*Compliance with an external standard/Law (PCI, HIPPA, etc.)
+	*Reduce organizational liability
+	*Improve organizational security posture
+-Usually broken down into sub-policies or standards
+-May be technically focused or not technically focused
+
+Information Security Policy (1)
+-Policy ID - a unique identifier for the policy so that other policies can reference it
+-Scope - states the set of things (not just computers) to which the policy applies
+-Policy Statement - states the policy to be followed
+	*example: "Hard drives of company laptops must be encrypted"
+-Procedures - specify how to be compliant with the policy
+	*example: "Bitlocker must be enabled on Windows laptops and Bitlocker passwords must adhere to coprorate password policies described in policy #2.B.C"
+
+Information Security Policy Structure (2)
+-Policy Owner - who is responsible for ensuring this policy is implemeneted?
+	*example: The Chief Information Security Officer will ensure that this policy is followed
+-Audit Mechanism/Period - describes how and how frequently the policy will be checked for compliance
+	*example: "Quarterly, we will use Powershell remote procedure calls to determine if Bitlocker is enabled on all Windows computers"
+-Update Period - how often will this policy be evaluated for updates
+	*example: this policy will be updated yearly
+-Few organizations include all of these in their policies
+
+
+Week 13, Lecture 2 - Information Security Programs (1)
+
+IT Organizational Structure
+-Development
+	*Responsible for producing software products
+	*Responsible for producing internal tooling
+	*People: Developers, Designers, etc.
+-Operations
+	*Responsible for ensuring the company can perform day-to-day activities
+	*People: System/network/database/etc. administrators/engineers
+-Management
+	*Responsible for overseeing development and operations
+
+Organizational Security Responsibilities
+-Development
+	*Ensure products are securely designed and free of bugs
+-Operations
+	*Ensure that corporate infrastructure is securely configured
+	*Usually where security is based
+-Management
+	*Ensure that both internal and external security requirements are met
+
+Division of Responsibilities
+			in between management and ops: security auditing incident response forensics
+Operations
+-Asset Management
+-Security Engineering
+-Security Operations
+-Change Manageemnt
+-Backup
+			in between ops and dev-op: dev sec ops
+Development
+-Product Security
+-Quality Assurance
+			in between dev and management: security requirements analysis
+Management
+-Risk Management
+-Compliance
+-Awareness
+			in the middle of all of them: vulnerability management
+
+
+Week 13, Lecture 3 - Information Security Programs (2)
+
+Security Team Responsibilities (Operations)
+-Asset Management
+	*Ensure physical assets are tracked and inventories are kept up to date
+-Security Engineering
+	*Deploying secure infrastructure
+-Security Operations (Monitoring)
+	*Ensure systems are secure while in use and determine if security has been violated
+-Change Management
+	*Evaluating updates and patches
+	*Ensuring updates can be applied
+-Backup
+	*Ensuring that system backups exist to facilititate recovery from incidents
+
+Security Team Responsibilities (Management)
+-Risk Management
+	*Evaluating organizational risk relating to development/operations
+	*Determining high-lvel corrective actions that need to be completed to mitigate risk
+-Compliance
+	*Determine compliance obligations and assess if they're being met
+-Awareness
+	*Ensure that information security policies are disseminated
+	*Ensure stakeholders are properly trained
+
+Security Team Responsbilities (Development)
+-Product Security
+	*Ensure that software is securely designed
+	*Ensure that software is securely developed
+	*Ensure that security bugs are patched in a timely fashion
+	*Ensure that data generated by software is securely stored on client systems
+-Quality Assurance
+	*Identify security-related bugs in software prior to release
+
+Security Team Responsibilities (Shared)
+-Development & Operations (Dev Sec Ops)
+	*Ensure that development environments are securely configured
+	*Ensure that local software supply chains are secure
+		-Dependency management is the next big problem in InfoSec (as of 11/2020)
+-Development & Management (Security Requirements Analysis)
+	*Ensure that product security requirements are clearly defined
+	*Ensure that product security requirements match client expectations
+	*Ensure that product security requirements adhere to security standards
+-Development & Management (Multiple)
+	*Security Auditing - detemine if systems are in compliance with policies/standards
+	*Incident Reponse - evaluate the scope of an incident and implement recovery procedures
+		-Commonly involves legal team
+	*Forensics - investigate the incident and collect evidence of the incident
+		-Certaintly involves legal team
+		-Must ensure chain of custody
+-All (Vulnerability Management)
+	*Assess new vulnerabilities for likeliness of exploitation and impact to organization
+	*Identify corrective actions that need to be taken by other teams
+	*Often interacts with change management
+
+
+Week 13, Lecture 4 - Incidents, Backup, & Recovery
+
+Backup & Recovery Processes
+-Backing up - process of creating archives of data that can be used to restore the systems in the event of an incident or disaster
+-Business Continuity - processes relating to maintaining some level of business operations during an incident or disaster while recovery is ongoing
+-Recovery - processes relating to restoring business operations, often from backups
+
+Levels of Security Incident
+-Non incident - typically system malfunction or user error that quality of service interruption for a very short period of time
+	*Usually managed by operations / security operations teams
+-Incident - event in which a system or service has quality of service impacted for a limited time
+	*Usually involves senior managaement, possibly involves legal
+-Severe incident - event in which a system or service has quality of service impacted for an extended period of time
+	*Certainly involves senior management and legal
+	*Likely involves organizational crisis management team (PR, social media, etc.)
+-Breech - an incident or severse incident where sensitive information is exposed (personally identificable information, personal heal information, payment card data, etc.)
+
+Understanding IT Security Environments
+Development:
+-Used by developers
+-No client Data
+Testing:
+-Used by QA engineers
+-No client data
+Staging:
+-Used by QA engineers and/or clients for UAT
+-Limited production data
+Production:
+-Used by clients (live)
+-Full production data
+
+Recovery Strategy Considerations
+-Focus on development/production environments
+	*Development environments often hold intellectual property
+	*Production environments hold actual data
+	*Testing/staging environments are often project-specific and disposable
+-Liability
+	*Contractual
+		-Obligated to a specific % of uptime by SLAs (service-level agreements)
+	*Legal
+		-Statuatory obligation to retain certain data, possibly in specific locations
+-Recovery Time
+-Cost
+
+System Redundancy
+-Cold spare - duplicate of the primary component that is neither in the environment nor enabled
+-Warm spare - duplicate of the primary component that is deployed in the environment but not enabled
+-Hot spare - duplicate of the primary component that is in the environment and enabled but not in use
+
+Recovery Site Strategies
+-Multi-site - a full enviornment copy, in use, often used for load distributions
+	*Pros: No to very low recovery time	Cons: Very expensive
+-Hot site - an active copy of the environment that is not in use
+	*Pros: Low recovery time		Cons: Very expensive
+-Warm site - an active copy of the environment with limited functionality
+	*Pros: Low recovery time		Cons: Usability may be impacted
+-Cold site - an inactive copy of the environment
+	*Pros: Inexpensive			Cons: Usabilitiy may be impacted
+
+Methods of Evaluating Recovery Processes
+-Table-top Exercise
+	*A structured walk-through of
+	*Each member of the disaster recovery team talks through their responsibilities
+	*Often focused on gap analysis
+-Walk-through Drill
+	*A more involved table-top exercise involving a scenarion and roleplaying to evaluate effectiveness
+-Functional Drill
+	*Involves actual responses / technical tests rather than discussions
+-Full Interruption Test
+	*A site or service is intentionally disabled to test recovery procedures / times
+
+
+Week 13, Lecture 3 - Social Engineering
+
+Types of Social Engineering
+-Pretexting - using an invented scenario to engage a target
+-Phishing - attempting to extract sensitive information from a target via technical means, done at scale
+-Vishing - phishing with phones
+-Spear phishing - highly targeted phishaing
+-Whaling - spear phishing performed on high-valued targets (CEO, CFO, etc.)
+-Tail-gaiting - attempting to bypass physical security by following real employees through an access control barrier
+... and many more
+
+Social Engineering Pretexts (i.e. Pressuring)
+-Reciprocity - I do something for you, you do something for me
+-Authority - I'm in a position of authority, do what I say
+	*Common pretext: Spoofing C-level executive and requesting sensitive info
+-Scarcity - I have a limited resource that you want more of
+	*Bribing, scams that advertise money
+-Commitment/Consistency
+	*You've done X before, why not do it now?
+-Liking
+	*I'll like you if you do X
+-Social Proof
+	*If you do X, you can brag to your friends
+
+Social Engineering Risk Management
+-Risk Identification
+	*Run periodic phishing campaigns against your employees
+-Risk Acceptance
+	*Some people are always going to click on the link
+-Risk Mitigation (awareness training)
+	*Should avoid punitive measures
+	*Often exists to reduce organizational liability
+-Risk Mitigation (Two factor authentication)
+	*Successfully phished user credentials are not useful without the second factor
+-Risk Mitigation (System/User isolation)
+	*In a well structured environment, one compromised user should not be a serious incident
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Week 14, Lecture 1 - Ethics & Ethical Dilemmas
+
+Defining 'Ethics'
+1. Morals - principles govern a person's behaviro or the conducting of an activity
+2. Ethical Theory (Morality) - Asserts a particular world view about what morals a person should hold
+3. Ethics - the branch of knowledge that deals with moral principles
+	*Focuses on the application of moral principles to dilemmas
+4. Meta-ethics - The branch of knowledge focused on comparing ethical theories
+
+Ethical Dilemmas (pt. 1)
+-Decide between morally sound options (competing goods)
+-Can involve inner conflict with the established boundaries of a business, a governmental agency, or the law
+-Examples:
+	*Following the truth vs. loyalty to a friend
+	*Following the law vs. compassion for an individual's hardship
+	*Concern for an individual vs. larger community impact
+
+Ethical Dilemmas (pt.2 )
+-Decide between morally undesirable options (competing evils)
+-Can involve inner conflict with the established boundaries of a business, a governmental agency, or the law
+-Examples:
+	*10 spaces in a life boat but 11 need to be saved
+	*Allowing theft vs. punishing a friend
+
+
+Week 14, Lecture 2 - Taxonomoy of Western Ethics
+
+High-level View
+-Objectivist
+	*There are correct answers to moral dilemmas that are correct regardless of context
+-Relativistic Ethical Theories
+	*There are correct answers to moral dilemmas but those correct in virtue of the context of the dilemma
+-Moral/Ethical Nihilism
+	*There are no correct answers to dilemmas
+
+				Ethical Theories
+		Relativistic Theories		Objectivist Theories
+Moral Relatvism	Cultural Relavatism	Kantianism	Utiltarianism	Many more/many variants
+
+
+Week 14, Lecture 3 - Relativistic Ethical Theories
+
+Moral Relativism
+-Extremely old account of morality
+-Guiding Principle(s): Morals are individually held beliefs. Being 'moral' means following your own beliefs. Being 'immoral' means acting against your beliefs
+-Pros:
+	*Permits for reasonable disagreements about morals and morality
+-Cons:
+	*Does not allow for resolving ethical disputes at the individual level
+
+Trolley Problem - Moral Relativism
+-Your belief makes the action moral/immoral
+
+Cultural Relativism
+-Extremely old account of morality (Herodotus, 484-425 BC)
+-Guiding Principle(s): Morals are societal constructions. Being 'moral' means following societal tradition. Being 'immoral' means acting against societal tradition
+-Pros:
+	*Respectful of societal histories
+-Cons:
+	*Does not allow for conflict resolution between societies
+		-If you're vacationining, do you follow your tradition or the tradition of the society where you are?
+	*Activism is difficult to defende
+
+Trolley Problem - Cultural Relativism
+-Whether you should pull the lever depends on the societal traditions you are following
+
+
+Week 14, Lecture 4 - Objectivist Ethical Theories
+
+Kantianism
+-Immanuel Kant (1724 - 1804)
+-Guiding Principle(s): Categorical Imperative (two versions)
+	*"Act only according to that maxim whereby you can, at the same time, will that it should become universal law"
+	*Persons may never be merely as a means to an end and must be treated as an end themselves
+-Pros:
+	*Focuses heavily on humanity and obligations to other humans in virtue of rationality
+-Cons:
+	*Either extremely rigid or requires incredibly nuanced maxims
+
+Trolly Problem - Kantianism
+V1: You cannot uniersalize "Killing one to save five is permissible"
+V2: Pulling the level treats the one on track B as means to an end
+
+Utilitarianism
+-Jeremy Benthan (1748 - 1832), John Stuart Mill (1806 - 1873)
+-Guiding Principle(s): Principle of Utility
+	*Atct in such a way that you maximize "the good" for the greatest number of people
+-Pros:
+	*Focus improving the lives of others
+-Cons:
+	*Focused entirely on outcomes. Means does not matter.
+	*Unclear definition of what "the good" is
+
+Trolley Problem - Utilitarianism
+-Pulling the lever maximizes the good
+
+
+Week 14, Lecture 5 - Professional Ethics
+
+Professional Ethics vs. Philosophical Effects
+Professional Code of Ethics:
+-Intended to promote trustworthy behavior in a profession
+-Focus on day-to-day problem solving
+-Often are enforced by professional organizations
+-Many include contradictory duties or fail to clearly resolve dilemmas
+Philosophyical Ethical Theories:
+-Intended to assert a particular world view about right/wrong
+-Focus on abstract moral reasoning
+-Generally not enforced by any common group
+-Contradictions are generally undesirable
+
+Association of Computing Machinery Code of Ethics
+General Ethical Principles:
+-Contribute to society and to human well-being, acknowledging that all people are stakeholders in computing
+-Avoid harm
+-Be honest and trustworthy
+-Be fair and do not discriminate
+-Respect the work required to produce new ideas, inventions, creative works, and computing artifacts
+-Respect privacy
+-Honor confidentiality
+Further Sections:
+-Professional Responsibilities - focus on duties to employers
+	*Specifically includes "Design and implement systems that are robustly and usably secure"
+-Professional Leadership Principles - focus on duties when in leadership roles
+-Compliance with Code - consequences for breaking the code
+	*(Current) treat violations of the code as inconsistent with membership in the ACM
+	*(Pre-2018) "Adherence of professionals to a code of ethics is a largely voluntary matter"
+
+ACM Code of Ethics & Trolley Problems
+-Contribute to society and to human well-being, acknowledging that all people are stakeholders in computing
+-Avoid harm
+-Be honest and trustworthy
+-Be fair and do not descriminate
+
